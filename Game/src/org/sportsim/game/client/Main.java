@@ -1,4 +1,4 @@
-package game;
+package org.sportsim.game.client;
 
 public class Main {
 

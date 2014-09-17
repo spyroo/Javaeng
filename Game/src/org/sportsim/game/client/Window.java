@@ -1,4 +1,4 @@
-package game;
+package org.sportsim.game.client;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
