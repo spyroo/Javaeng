@@ -1,4 +1,4 @@
-package game;
+package org.game.client;
 
 public class Main {
 
