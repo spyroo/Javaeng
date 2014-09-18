@@ -7,9 +7,10 @@ public class GuiItem {
 	private BoundingBox boundingBox;
 	private Texture texture;
 	
-	public GuiItem(BoundingBox boundingBox, Texture texture){
+	public GuiItem(BoundingBox boundingBox, Texture texture, GuiActionListener actionListener){
 		this.boundingBox = boundingBox;
 		this.texture = texture;
+		boundingBox.setGuiActionListener(actionListener);
 	}
 	
 	public BoundingBox getBoundingBox(){
@@ -27,5 +28,6 @@ public class GuiItem {
 	public void setTexture(Texture texture){
 		this.texture = texture;
 	}
+	
 	
 }

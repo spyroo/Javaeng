@@ -1,15 +1,11 @@
 package org.game.client;
 
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -30,7 +26,20 @@ public class Window extends JFrame implements Runnable, KeyListener, MouseListen
 		controller = new Controller(gameRender);
 		System.out.println(width + ":" + height);
 		init();
-		gameRender.addItemToRender(new GuiItem(new BoundingBox(50, 50, 200, 50), new Texture("button1.png")));
+		
+		gameRender.addItemToRender(new GuiItem(new BoundingBox(50, 50, 200, 50), new Texture("button1.png"), new GuiActionListener() {
+			@Override
+			public void actionPreformed() {
+				System.out.println("I clicked the first button");
+			}
+		}));
+		gameRender.addItemToRender(new GuiItem(new BoundingBox(500, 302, 200, 50), new Texture("google.jpg"), new GuiActionListener() {
+			@Override
+			public void actionPreformed() {
+				System.out.println("TheGOOGGLE BUTTONA HASI JAWLCOLD");
+			}
+		}));
+		
 	}
 
 	/**
@@ -79,7 +88,6 @@ public class Window extends JFrame implements Runnable, KeyListener, MouseListen
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		controller.mouseClicked(e);
 	}
 
 	@Override
@@ -90,8 +98,7 @@ public class Window extends JFrame implements Runnable, KeyListener, MouseListen
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		controller.mouseClicked(e);
 	}
 
 	@Override

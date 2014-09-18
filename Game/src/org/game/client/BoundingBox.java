@@ -9,6 +9,7 @@ public class BoundingBox {
 	private double y;
 	private double width;
 	private double height;
+	private GuiActionListener actionListener;
 	
 	public BoundingBox(double x, double y, double width, double height){
 		this.x = x;
@@ -70,11 +71,14 @@ public class BoundingBox {
 		topRight.setLocation(getX() + getWidth(), getY());
 		if(p.getX() > topLeft.getX() && p.getX() < topRight.getX()){
 			if(p.getY() > topLeft.getY() && p.getY() < botLeft.getY()){
-				System.out.println("A BUTTON WAS VCLAICKE");
 				return true;
 			}
 		}
 		return false;
+	}
+	
+	public void click(){
+		actionListener.actionPreformed();
 	}
 	
 	public double distanceBetween(Point a, Point b){
@@ -85,6 +89,10 @@ public class BoundingBox {
 		Point mid = new Point();
 		mid.setLocation((a.getX() + b.getX()) / 2, (a.getY() / b.getY()) / 2);
 		return mid;
+	}
+	
+	public void setGuiActionListener(GuiActionListener actionListener){
+		this.actionListener = actionListener;
 	}
 	
 }

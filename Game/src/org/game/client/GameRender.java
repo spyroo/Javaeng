@@ -1,10 +1,7 @@
 package org.game.client;
 
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
 import java.util.ArrayList;
-import java.util.Random;
 
 import javax.swing.JPanel;
 
@@ -25,9 +22,8 @@ public class GameRender extends JPanel{
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
-		g.drawString(new Random().nextInt() + "", 20, 20);
 		for(GuiItem i : guiItems){
-			g.drawImage(i.getTexture().getImage(), (int) i.getBoundingBox().getX(), (int) i.getBoundingBox().getY(), null);
+			g.drawImage(i.getTexture().getImage().getScaledInstance((int)i.getBoundingBox().getWidth(), (int)i.getBoundingBox().getHeight(), 0), (int) i.getBoundingBox().getX(), (int) i.getBoundingBox().getY(), null);
 		}
 	}
 	

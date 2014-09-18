@@ -22,7 +22,9 @@ public class Controller {
 	public void mouseClicked(MouseEvent e){
 		ArrayList<BoundingBox> items = gr.getItems();
 		for(BoundingBox b : items){
-			if(b.isInside(e.getLocationOnScreen()));
+			if(b.isInside(e.getLocationOnScreen())){
+				b.click();
+			}
 		}
 	}
 	
