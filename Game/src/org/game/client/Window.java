@@ -23,13 +23,14 @@ public class Window extends JFrame implements Runnable, KeyListener, MouseListen
 	private Controller controller;
 
 	public Window() {
-		controller = new Controller();
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		width = (int) screenSize.getWidth();
 		height = (int) screenSize.getHeight();
 		gameRender = new GameRender();
+		controller = new Controller(gameRender);
 		System.out.println(width + ":" + height);
 		init();
+		gameRender.addItemToRender(new GuiItem(new BoundingBox(50, 50, 200, 50), new Texture("button1.png")));
 	}
 
 	/**
@@ -78,7 +79,7 @@ public class Window extends JFrame implements Runnable, KeyListener, MouseListen
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		System.out.println(gameRender.getBounding().isInside(getMousePosition()));
+		controller.mouseClicked(e);
 	}
 
 	@Override

@@ -64,20 +64,17 @@ public class BoundingBox {
 	public boolean isInside(Point p){
 		Point topLeft = new Point();
 		topLeft.setLocation(getX(), getY());
-		
 		Point botLeft = new Point();
 		botLeft.setLocation(getX(), getY() + getHeight());
-		
 		Point topRight = new Point();
 		topRight.setLocation(getX() + getWidth(), getY());
-		
 		if(p.getX() > topLeft.getX() && p.getX() < topRight.getX()){
 			if(p.getY() > topLeft.getY() && p.getY() < botLeft.getY()){
+				System.out.println("A BUTTON WAS VCLAICKE");
 				return true;
 			}
 		}
 		return false;
-		
 	}
 	
 	public double distanceBetween(Point a, Point b){
