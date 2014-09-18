@@ -7,21 +7,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
-public class Window extends JFrame implements Runnable, KeyListener{
-	
+public class Window extends JFrame implements Runnable, KeyListener, MouseListener {
+
 	private Dimension screenSize;
 	private int width;
 	private int height;
 	private static final long serialVersionUID = -4369730830015653927L;
 	private GameRender gameRender;
-	private ArrayList<Character> currentKeys;
-	
+	private Controller controller;
+
 	public Window() {
-		
+		controller = new Controller();
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		width = (int) screenSize.getWidth();
 		height = (int) screenSize.getHeight();
@@ -29,11 +31,11 @@ public class Window extends JFrame implements Runnable, KeyListener{
 		System.out.println(width + ":" + height);
 		init();
 	}
-	
+
 	/**
 	 * Initialize the window
 	 */
-	public void init(){
+	public void init() {
 		setPreferredSize(new Dimension(width, height));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
@@ -41,35 +43,66 @@ public class Window extends JFrame implements Runnable, KeyListener{
 		setVisible(true);
 		add(gameRender);
 		addKeyListener(this);
+		addMouseListener(this);
 		pack();
 	}
 
 	@Override
 	public void run() {
 		long lastFrameTime = System.currentTimeMillis();
-		while(true){
-			if(System.currentTimeMillis() - lastFrameTime > 1000/60){
-				gameRender.repaint();
-				lastFrameTime = System.currentTimeMillis();
+		while (true) {
+			if (hasFocus()) {
+				if (System.currentTimeMillis() - lastFrameTime > 1000 / 60) {
+					gameRender.repaint();
+					lastFrameTime = System.currentTimeMillis();
+				}
 			}
 		}
 	}
 
 	@Override
 	public void keyPressed(KeyEvent arg0) {
-		currentKeys.add(arg0.getKeyChar());
+		controller.keyPushed(arg0.getKeyChar());
 	}
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
-		currentKeys.remove(arg0.getKeyChar());
+		controller.keyReleased(arg0.getKeyChar());
 	}
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		System.out.println(gameRender.getBounding().isInside(getMousePosition()));
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
-	
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
