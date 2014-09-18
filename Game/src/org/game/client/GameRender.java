@@ -46,5 +46,9 @@ public class GameRender extends JPanel{
 	public void clearItems(){
 		guiItems.clear();
 	}
+
+	public void removeItemToRender(int i) {
+		guiItems.remove(i);
+	}
 	
 }

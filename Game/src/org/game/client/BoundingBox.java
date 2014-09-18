@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class BoundingBox {
 	
+	private GuiItem item;
 	private double x;
 	private double y;
 	private double width;
@@ -23,6 +24,10 @@ public class BoundingBox {
 		this.y = (int) pos.getY();
 		this.height = height;
 		this.width = width;
+	}
+	
+	public void setGuiitem(GuiItem item){
+		this.item = item;
 	}
 	
 	public void setLocation(Point location){
@@ -77,8 +82,8 @@ public class BoundingBox {
 		return false;
 	}
 	
-	public void click(){
-		actionListener.actionPreformed();
+	public void click(String id){
+		actionListener.actionPreformed(id);
 	}
 	
 	public double distanceBetween(Point a, Point b){
@@ -93,6 +98,15 @@ public class BoundingBox {
 	
 	public void setGuiActionListener(GuiActionListener actionListener){
 		this.actionListener = actionListener;
+	}
+
+	public void setLocation(double x, double y) {
+		this.x = x;
+		this.y = y;
+	}
+	
+	public GuiItem getItem(){
+		return item;
 	}
 	
 }

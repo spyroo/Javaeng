@@ -4,13 +4,16 @@ import java.awt.Point;
 
 public class GuiItem {
 	
+	private String id;
 	private BoundingBox boundingBox;
 	private Texture texture;
 	
-	public GuiItem(BoundingBox boundingBox, Texture texture, GuiActionListener actionListener){
+	public GuiItem(String id, BoundingBox boundingBox, Texture texture, GuiActionListener actionListener){
 		this.boundingBox = boundingBox;
 		this.texture = texture;
 		boundingBox.setGuiActionListener(actionListener);
+		boundingBox.setGuiitem(this);
+		this.id = id;
 	}
 	
 	public BoundingBox getBoundingBox(){
@@ -27,6 +30,10 @@ public class GuiItem {
 	
 	public void setTexture(Texture texture){
 		this.texture = texture;
+	}
+	
+	public String getId(){
+		return id;
 	}
 	
 	
