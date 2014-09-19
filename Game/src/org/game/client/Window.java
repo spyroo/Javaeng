@@ -17,6 +17,7 @@ public class Window extends JFrame implements Runnable, KeyListener, MouseListen
 	private static final long serialVersionUID = -4369730830015653927L;
 	private GameRender gameRender;
 	private Controller controller;
+	private static final String WINDOW_TITLE = "Sport sim alpha";
 
 	public Window() {
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -27,14 +28,14 @@ public class Window extends JFrame implements Runnable, KeyListener, MouseListen
 		System.out.println(width + ":" + height);
 		init();
 		
-		gameRender.addItemToRender(new GuiItem("button1", new BoundingBox(50, 50, 200, 50), new Texture("button1.png"), new GuiActionListener() {
+		gameRender.addItemToRender(new GuiItemInteractable("button1", new BoundingBox(50, 50, 200, 50), new Texture("button1.png"), new GuiActionListener() {
 			@Override
 			public void actionPreformed(String id) {
 				System.out.println("Button " + id + " was pressed");
-				gameRender.removeItemToRender(0);
+				gameRender.removeItemByID("button1");
 			}
 		}));
-		gameRender.addItemToRender(new GuiItem("button2", new BoundingBox(500, 302, 200, 50), new Texture("google.jpg"), new GuiActionListener() {
+		gameRender.addItemToRender(new GuiItemInteractable("button2", new BoundingBox(500, 302, 200, 50), new Texture("google.jpg"), new GuiActionListener() {
 			@Override
 			public void actionPreformed(String id) {
 				System.out.println("Button " + id + " was pressed");
@@ -55,6 +56,7 @@ public class Window extends JFrame implements Runnable, KeyListener, MouseListen
 		add(gameRender);
 		addKeyListener(this);
 		addMouseListener(this);
+		setTitle(WINDOW_TITLE);
 		pack();
 	}
 
