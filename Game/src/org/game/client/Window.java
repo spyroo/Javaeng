@@ -47,6 +47,7 @@ public class Window extends JFrame implements Runnable, KeyListener, MouseListen
 	/**
 	 * Initialize the window
 	 */
+	
 	public void init() {
 		setPreferredSize(new Dimension(width, height));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
