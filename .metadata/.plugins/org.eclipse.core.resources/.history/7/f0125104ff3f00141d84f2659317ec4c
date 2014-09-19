@@ -28,14 +28,14 @@ public class Window extends JFrame implements Runnable, KeyListener, MouseListen
 		System.out.println(width + ":" + height);
 		init();
 		
-		gameRender.addItemToRender(new GuiItemInteractable("button1", new BoundingBox(50, 50, 350, 200), new Texture("league.jpeg"), new GuiActionListener() {
+		gameRender.addItemToRender(new GuiItemInteractable("button1", new BoundingBox(50, 50, 200, 50), new Texture("button1.png"), new GuiActionListener() {
 			@Override
 			public void actionPreformed(String id) {
 				System.out.println("Button " + id + " was pressed");
 				gameRender.removeItemByID("button1");
 			}
 		}));
-		gameRender.addItemToRender(new GuiItemInteractable("button2", new BoundingBox(500, 302, 350, 200), new Texture("dota.png"), new GuiActionListener() {
+		gameRender.addItemToRender(new GuiItemInteractable("button2", new BoundingBox(500, 302, 200, 50), new Texture("google.jpg"), new GuiActionListener() {
 			@Override
 			public void actionPreformed(String id) {
 				System.out.println("Button " + id + " was pressed");
