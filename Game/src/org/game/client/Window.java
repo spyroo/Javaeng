@@ -17,20 +17,26 @@ public class Window extends JFrame implements Runnable, KeyListener, MouseListen
 	private static final long serialVersionUID = -4369730830015653927L;
 	private GameRender gameRender;
 	private Controller controller;
+	private SoundManager soundManager;
 	private static final String WINDOW_TITLE = "Sport sim alpha";
+	private Sound s;
 
 	public Window() {
+		s = new Sound("pacman_eatghost.wav");
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		width = (int) screenSize.getWidth();
 		height = (int) screenSize.getHeight();
 		gameRender = new GameRender();
+		soundManager = new SoundManager();
 		controller = new Controller(gameRender);
 		System.out.println(width + ":" + height);
 		init();
 		
+		
 		gameRender.addItemToRender(new GuiItemInteractable("button1", new BoundingBox(50, 50, 350, 200), new Texture("league.jpeg"), new GuiActionListener() {
 			@Override
 			public void actionPreformed(String id) {
+				soundManager.addSound(s);
 				System.out.println("Button " + id + " was pressed");
 				gameRender.removeItemByID("button1");
 			}
@@ -68,6 +74,7 @@ public class Window extends JFrame implements Runnable, KeyListener, MouseListen
 			if (hasFocus()) {
 				if (System.currentTimeMillis() - lastFrameTime > 1000 / 60) {
 					gameRender.repaint();
+					soundManager.doSounds();
 					lastFrameTime = System.currentTimeMillis();
 				}
 			}
