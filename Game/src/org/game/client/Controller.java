@@ -1,5 +1,6 @@
 package org.game.client;
 
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
@@ -32,6 +33,10 @@ public class Controller {
 			for(BoundingBox b : boxes){
 				b.setLocation(b.getX() + 10, b.getY());
 			}
+		}
+		if (c == 'x'){
+			System.exit(0);
+			System.out.println("Window was closed by user");
 		}
 	}
 	
