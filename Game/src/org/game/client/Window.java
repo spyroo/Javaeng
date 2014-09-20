@@ -24,7 +24,11 @@ public class Window extends JFrame implements Runnable, KeyListener, MouseListen
 	public Window() {
 		s = new Sound("pacman_eatghost.wav");
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		width = (int) screenSize.getWidth();
+		if (screenSize.getWidth() >= 1920) {
+			width = 1920;
+		} else {
+			width = (int) screenSize.getWidth();
+		}
 		height = (int) screenSize.getHeight();
 		gameRender = new GameRender();
 		soundManager = new SoundManager();
