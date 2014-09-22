@@ -13,6 +13,7 @@ public class GuiItemStatic implements GuiItem{
 		boundingBox.setGuiitem(this);
 	}
 	
+	
 	@Override
 	public Texture getTexture() {
 		return texture;
