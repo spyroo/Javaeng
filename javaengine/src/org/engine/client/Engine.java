@@ -1,4 +1,4 @@
-package org.game.client;
+package org.engine.client;
 
 public class Engine {
 
