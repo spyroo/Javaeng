@@ -11,6 +11,7 @@ public class Window extends JFrame {
 	private Dimension screenSize;
 	private int width;
 	private int height;
+	private RenderFrame frame;
 
 	protected Window() {
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -27,5 +28,14 @@ public class Window extends JFrame {
 		setTitle(title);
 		pack();
 	}
-
+	
+	public void setRenderFrame(RenderFrame frame){
+		this.frame = frame;
+		add(frame);
+	}
+	
+	public RenderFrame getRenderFrame(){
+		return frame;
+	}
+	
 }

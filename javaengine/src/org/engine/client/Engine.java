@@ -1,5 +1,7 @@
 package org.engine.client;
 
+import org.engine.debug.*;
+
 public class Engine implements Runnable{
 	
 	private long lastFps;
@@ -9,7 +11,11 @@ public class Engine implements Runnable{
 	
 	//-----DEBUG-----
 	public static void main(String[] args){
-		new Engine().startEngine();
+		Engine e = new Engine();
+		e.startEngine();
+		Window w = e.getWindowInstance();
+		RenderFrame f = new CustomRenderFrame(0);
+		w.setRenderFrame(f);
 	}
 	//-----END DEBUG-----
 	
@@ -20,7 +26,7 @@ public class Engine implements Runnable{
 		lastFps = getTime();
 	}
 	
-	public static Window getWindowInstance(){
+	public Window getWindowInstance(){
 		return new Window();
 	}
 	
