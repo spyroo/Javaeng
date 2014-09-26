@@ -12,6 +12,9 @@ public class Window extends JFrame {
 	private int width;
 	private int height;
 	private RenderFrame frame;
+	private JMenuBar menuBar;
+	private JMenu menu;
+	private JMenuItem itemOptions;
 
 	protected Window() {
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
