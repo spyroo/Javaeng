@@ -10,9 +10,5 @@ public class RenderFrame extends JPanel{
 		
 	}
 	
-	@Override
-	public void repaint() {
-		super.repaint();
-	}
 	
 }
