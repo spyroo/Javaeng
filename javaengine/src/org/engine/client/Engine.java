@@ -11,11 +11,11 @@ public class Engine implements Runnable{
 	private int fps;
 	private int workingFps;
 	private int maxFps;
+	private Window window;
 	
 	//-----DEBUG-----
 	public static void main(String[] args){
 		Engine e = new Engine();
-		e.setDefaultLookAndFeel();
 		Window w = e.getWindowInstance();
 		e.startEngine();
 		RenderFrame f = new CustomRenderFrame(0);
@@ -32,7 +32,8 @@ public class Engine implements Runnable{
 	}
 	
 	public Window getWindowInstance(){
-		return new Window();
+		window = new Window(Window.SCREEN_CONFIG.WINDOWED);
+		return window;
 	}
 	
 	private void tick(){
@@ -46,20 +47,6 @@ public class Engine implements Runnable{
 		}
 		workingFps++;
 		
-	}
-	
-	public void setDefaultLookAndFeel() {
-		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch(InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (UnsupportedLookAndFeelException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	/**

@@ -1,6 +1,8 @@
 package org.engine.client;
 
 import java.awt.Dimension;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
@@ -16,46 +18,29 @@ import java.awt.event.ActionEvent;
 
 public class Window extends JFrame {
 
+	public static enum SCREEN_CONFIG {FULLSCREEN, WINDOWED, BORDERLESS_WINDOWED};
+	
 	private static final long serialVersionUID = -8266163970188368677L;
-	private Dimension screenSize;
-	private int width;
-	private int height;
+	private GraphicsEnvironment ge;
+	private GraphicsDevice defaultDevice;
 	private RenderFrame frame;
-	private JMenuBar menuBar;
-	private JMenu mnFile;
-	private JMenuItem menuItem;
+	private SCREEN_CONFIG windowType;
 
-	protected Window() {
-		
-		menuBar = new JMenuBar();
-		setJMenuBar(menuBar);
-		mnFile = new JMenu("File");
-		menuBar.add(mnFile);
-		menuItem = new JMenuItem("Exit");
-		menuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
-			}
-		});
-		mnFile.add(menuItem);
-		
-		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		width = (int) screenSize.getWidth();
-		
-		//prevents fullscreen on 3 monitor debug
-		if (width >= 1920) {
-			width = 1920;
-		} else {
-			width = (int) screenSize.getWidth();
-		}
-		height = (int) screenSize.getHeight();
+	protected Window(SCREEN_CONFIG mode) {
+		ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		defaultDevice = ge.getDefaultScreenDevice();
+		windowType = mode;
 	}
 
 	public void init(String title) {
-		setPreferredSize(new Dimension(width, height));
+		if(windowType == SCREEN_CONFIG.FULLSCREEN){
+			defaultDevice.setFullScreenWindow(this);
+		}else if(windowType == SCREEN_CONFIG.BORDERLESS_WINDOWED){
+			setUndecorated(true);
+		}
+		setPreferredSize(new Dimension(defaultDevice.getDefaultConfiguration().getBounds().width, defaultDevice.getDefaultConfiguration().getBounds().height));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
-		setUndecorated(true);
 		setVisible(true);
 		setTitle(title);
 		pack();
