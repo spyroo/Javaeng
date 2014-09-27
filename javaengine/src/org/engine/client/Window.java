@@ -7,6 +7,10 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -18,25 +22,32 @@ public class Window extends JFrame {
 	private int height;
 	private RenderFrame frame;
 	private JMenuBar menuBar;
-	private JMenu menu;
+	private JMenu mnFile;
 	private JMenuItem menuItem;
 
 	protected Window() {
 		
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-		menu = new JMenu("Options");
-		menuBar.add(menu);
+		mnFile = new JMenu("File");
+		menuBar.add(mnFile);
 		menuItem = new JMenuItem("Exit");
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
 		});
-		menu.add(menuItem);
+		mnFile.add(menuItem);
 		
 		screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		width = (int) screenSize.getWidth();
+		
+		//prevents fullscreen on 3 monitor debug
+		if (width >= 1920) {
+			width = 1920;
+		} else {
+			width = (int) screenSize.getWidth();
+		}
 		height = (int) screenSize.getHeight();
 	}
 

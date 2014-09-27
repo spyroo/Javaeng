@@ -1,5 +1,8 @@
 package org.engine.client;
 
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 import org.engine.debug.*;
 
 public class Engine implements Runnable{
@@ -12,10 +15,12 @@ public class Engine implements Runnable{
 	//-----DEBUG-----
 	public static void main(String[] args){
 		Engine e = new Engine();
-		e.startEngine();
+		e.setDefaultLookAndFeel();
 		Window w = e.getWindowInstance();
+		e.startEngine();
 		RenderFrame f = new CustomRenderFrame(0);
 		w.setRenderFrame(f);
+		w.init("Javaeng Test Build");
 	}
 	//-----END DEBUG-----
 	
@@ -41,6 +46,20 @@ public class Engine implements Runnable{
 		}
 		workingFps++;
 		
+	}
+	
+	public void setDefaultLookAndFeel() {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch(InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**
