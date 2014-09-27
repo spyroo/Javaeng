@@ -30,7 +30,7 @@ public class Window extends JFrame {
 	 * Protected Constructor for <code>Window</code> used to create a <code>Window</code> object. Only to be used by <code>Engine</code>
 	 * <br />
 	 * <br />
-	 * To get an object of <code>Window</code> use <code>Engine.getWindowInstance(Window.SCREEN_CONFIG)</code>
+	 * To get an instance of <code>Window</code> use <code>Engine.getWindowInstance(Window.SCREEN_CONFIG)</code>
 	 * 
 	 * @param mode The <code>SCREEN_CONFIG</code> to create the window with
 	 */
