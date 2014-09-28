@@ -25,6 +25,8 @@ public class Window extends JFrame {
 	private GraphicsDevice defaultDevice;
 	private RenderFrame frame;
 	private SCREEN_CONFIG windowType;
+	private int width;
+	private int height;
 	
 	/**
 	 * Protected Constructor for <code>Window</code> used to create a <code>Window</code> object. Only to be used by <code>Engine</code>
@@ -33,11 +35,15 @@ public class Window extends JFrame {
 	 * To get an instance of <code>Window</code> use <code>Engine.getWindowInstance(Window.SCREEN_CONFIG)</code>
 	 * 
 	 * @param mode The <code>SCREEN_CONFIG</code> to create the window with
+	 * @param width The width of the <code>Window</code> to be created, ignored if <code>SCREEN_CONFIG</code> is <code>BORDERLESS_WINDOWED</code>
+	 * @param height The height of the <code>Window</code> to be created, ignored if <code>SCREEN_CONFIG</code> is <code>BORDERLESS_WINDOWED</code>
 	 */
-	protected Window(SCREEN_CONFIG mode) {
+	protected Window(SCREEN_CONFIG mode, int width, int height) {
 		ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		defaultDevice = ge.getDefaultScreenDevice();
 		windowType = mode;
+		this.width = width;
+		this.height = height;
 	}
 	
 	/**
@@ -46,15 +52,21 @@ public class Window extends JFrame {
 	 * @param title Title of the window to be initialize
 	 */
 	public void init(String title) {
+		
+		setResizable(false);
+		setUndecorated(true);
+
 		if(windowType == SCREEN_CONFIG.FULLSCREEN){
+			setPreferredSize(new Dimension(width, height));
 			defaultDevice.setFullScreenWindow(this);
 		}else if(windowType == SCREEN_CONFIG.BORDERLESS_WINDOWED){
-			setUndecorated(true);
-			setResizable(false);
+			setPreferredSize(new Dimension(defaultDevice.getDefaultConfiguration().getBounds().width, defaultDevice.getDefaultConfiguration().getBounds().height));
 		}else{
+			setUndecorated(false);
 			setResizable(true);
+			setPreferredSize(new Dimension(width, height));
 		}
-		setPreferredSize(new Dimension(defaultDevice.getDefaultConfiguration().getBounds().width, defaultDevice.getDefaultConfiguration().getBounds().height));
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		setTitle(title);

@@ -17,7 +17,7 @@ public class Engine implements Runnable{
 	//The releases WILL NOT HAVE A MAIN METHOD DELETE ME BEFORE RELEASING
 	public static void main(String[] args){
 		Engine e = new Engine();
-		Window w = e.getWindowInstance(Window.SCREEN_CONFIG.WINDOWED);
+		Window w = e.getWindowInstance(Window.SCREEN_CONFIG.FULLSCREEN, 800, 600);
 		e.startEngine();
 		RenderFrame f = new CustomRenderFrame();
 		w.setRenderFrame(f);
@@ -39,9 +39,9 @@ public class Engine implements Runnable{
 	 * @param mode The mode
 	 * @return
 	 */
-	public Window getWindowInstance(Window.SCREEN_CONFIG mode){
+	public Window getWindowInstance(Window.SCREEN_CONFIG mode, int width, int height){
 		if(window == null)
-			window = new Window(mode);
+			window = new Window(mode, width, height);
 		return window;
 	}
 	/**
