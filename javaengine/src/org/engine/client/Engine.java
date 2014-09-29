@@ -1,5 +1,11 @@
 package org.engine.client;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.util.ArrayList;
+
+import javax.swing.JFrame;
+
 import org.engine.debug.*;
 
 public class Engine implements Runnable{
@@ -19,6 +25,7 @@ public class Engine implements Runnable{
 		RenderFrame f = new RenderFrame();
 		f.addEntity(new EntityTest());
 		w.setRenderFrame(f);
+		w.setIconImage(Toolkit.getDefaultToolkit().getImage("debugsrc/nickCage.jpg"));
 		w.init("Javaeng Test Build");
 	}
 	//-----END DEBUG-----
