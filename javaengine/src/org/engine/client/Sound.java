@@ -7,9 +7,15 @@ import java.net.*;
 public class Sound implements Runnable {
 
 	private String pathAndFileName;
+	private AudioClip clip;
 	
 	public Sound(String pathAndFileName){
 		this.pathAndFileName = pathAndFileName;
+		try {
+			clip = Applet.newAudioClip(new URL("file:" + pathAndFileName));
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public String getPathAndFileName(){
@@ -29,12 +35,6 @@ public class Sound implements Runnable {
 	 * Plays the sound at the location of <code>pathAndFileName</code>
 	 */
 	public void playSound(){
-		try {
-			AudioClip clip = Applet.newAudioClip(new URL("file:" + pathAndFileName));
-			clip.play();
-			System.out.println("PLAYED");
-		} catch (MalformedURLException murle) {
-			murle.printStackTrace();
-		}
+		clip.play();
 	}
 }

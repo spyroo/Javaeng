@@ -19,6 +19,7 @@ public class EntityTest extends Entity{
 		super.update();
 		if(new Random().nextInt(10000000) == 1){
 			RenderFrame.addSoundToQueue(new Sound("debugsrc/0477.wav"));
+			System.out.println("Scream!");
 		}
 	}
 	

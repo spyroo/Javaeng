@@ -26,7 +26,6 @@ public class RenderFrame extends JPanel{
 		}
 		for(Sound s : soundQueue){
 			new Thread(s).start();
-			System.out.println("queue");
 		}
 		soundQueue.clear();
 	}
