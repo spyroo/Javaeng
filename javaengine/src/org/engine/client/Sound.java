@@ -1,8 +1,6 @@
 package org.engine.client;
 
-import java.io.InputStream;
 
-import javax.sound.sampled.AudioInputStream;
 import java.applet.*;
 import java.net.*;
 
@@ -14,14 +12,25 @@ public class Sound implements Runnable {
 		this.pathAndFileName = pathAndFileName;
 	}
 	
+	public String getPathAndFileName(){
+		return pathAndFileName;
+	}
+	
+	public void setPathAndFileName(String pathAndFileName){
+		this.pathAndFileName = pathAndFileName;
+	}
+	
 	@Override
 	public void run() {
 		playSound();
 	}
 	
+	/**
+	 * Plays the sound at the location of <code>pathAndFileName</code>
+	 */
 	public void playSound(){
 		try {
-			AudioClip clip = Applet.newAudioClip(new URL("file:"));
+			AudioClip clip = Applet.newAudioClip(new URL("file:" + pathAndFileName));
 			clip.play();
 		} catch (MalformedURLException murle) {
 			murle.printStackTrace();
