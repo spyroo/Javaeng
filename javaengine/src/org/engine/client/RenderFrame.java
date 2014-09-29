@@ -26,11 +26,12 @@ public class RenderFrame extends JPanel{
 	
 	@Override
 	public void paint(Graphics g) {
+		super.paint(g);
 		g.drawString("HELLO", 50, 50);
 		for(Entity e : entities){
 			g.drawImage(e.getTexture().getImage().getScaledInstance(e.getBoundingBox().getWidth(), e.getBoundingBox().getHeight(), 0), e.getBoundingBox().getX(), e.getBoundingBox().getY(), null);
 		}
-		super.paint(g);
+		
 	}
 	
 	public void addEntity(Entity e){
