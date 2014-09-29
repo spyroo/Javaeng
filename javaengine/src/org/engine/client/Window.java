@@ -119,8 +119,13 @@ public class Window extends JFrame {
 	public SCREEN_CONFIG getScreenConfig() {
 		return windowType;
 	}
-
-	static public Rectangle getScreenBounds(Window wnd) {
+	
+	/**
+	 * Gets the screen bounds of the main window
+	 * @param wnd The window
+	 * @return
+	 */
+	public Rectangle getScreenBounds(Window wnd) {
 		Rectangle sb;
 		Insets si = getScreenInsets(wnd);
 
@@ -139,7 +144,7 @@ public class Window extends JFrame {
 		return sb;
 	}
 
-	static public Insets getScreenInsets(Window wnd) {
+	public Insets getScreenInsets(Window wnd) {
 		Insets si;
 
 		if (wnd == null) {

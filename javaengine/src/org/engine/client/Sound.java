@@ -32,6 +32,7 @@ public class Sound implements Runnable {
 		try {
 			AudioClip clip = Applet.newAudioClip(new URL("file:" + pathAndFileName));
 			clip.play();
+			System.out.println("PLAYED");
 		} catch (MalformedURLException murle) {
 			murle.printStackTrace();
 		}
