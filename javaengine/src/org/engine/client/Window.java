@@ -73,6 +73,7 @@ public class Window extends JFrame {
 		pack();
 	}
 	
+	
 	/**
 	 * Adds the <code>RenderFrame</code> as the current <code>RenderFrame</code> for updating after removing the current <code>RenderFrame</code>
 	 * @param frame The <code>RenderFrame</code> to be added
@@ -81,7 +82,7 @@ public class Window extends JFrame {
 		if(this.frame != null)
 			getContentPane().remove(this.frame);
 		this.frame = frame;
-		getContentPane().add(frame);
+		add(frame);
 	}
 	/**
 	 * Gets the current <code>RenderFrame</code> being used to render
@@ -98,5 +99,7 @@ public class Window extends JFrame {
 	public SCREEN_CONFIG getScreenConfig(){
 		return windowType;
 	}
+	
+	
 	
 }

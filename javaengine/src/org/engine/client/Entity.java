@@ -48,5 +48,12 @@ public class Entity {
 		return texture;
 	}
 	
+	public void setX(int x){
+		boundingBox.setX(x);
+	}
+	
+	public void setY(int y){
+		boundingBox.setY(y);
+	}
 	
 }

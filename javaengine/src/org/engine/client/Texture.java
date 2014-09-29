@@ -24,13 +24,15 @@ public class Texture {
 	 * @param imageNameAndPath
 	 * @return
 	 */
-	public Image getImage(String imageNameAndPath) {
+	private Image getImage(String imageNameAndPath) {
 		try {
 			Image imageTemp = ImageIO.read(new FileInputStream(imageNameAndPath));
+			System.out.println("yep");
 			return imageTemp;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println("nope");
 		return null;
 	}
 

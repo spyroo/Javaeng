@@ -1,8 +1,5 @@
 package org.engine.client;
 
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-
 import org.engine.debug.*;
 
 public class Engine implements Runnable{
@@ -17,15 +14,16 @@ public class Engine implements Runnable{
 	//The releases WILL NOT HAVE A MAIN METHOD DELETE ME BEFORE RELEASING
 	public static void main(String[] args){
 		Engine e = new Engine();
-		Window w = e.getWindowInstance(Window.SCREEN_CONFIG.FULLSCREEN, 800, 600);
+		Window w = e.getWindowInstance(Window.SCREEN_CONFIG.BORDERLESS_WINDOWED, 1920, 1080);
 		e.startEngine();
-		RenderFrame f = new CustomRenderFrame();
+		RenderFrame f = new RenderFrame();
+		f.addEntity(new EntityTest());
 		w.setRenderFrame(f);
 		w.init("Javaeng Test Build");
 	}
 	//-----END DEBUG-----
 	/**
-	 * The <code>Constructor</code> of the Engine class
+	 * The Constructor of the <code>Engine</code> class
 	 * 
 	 */
 	public Engine(){
@@ -58,8 +56,9 @@ public class Engine implements Runnable{
 		}
 		workingFps++;
 		
-		window.repaint();
-		
+		if(window.getRenderFrame() != null){
+			window.getRenderFrame().updateFrame();
+		}
 	}
 	
 	/**
