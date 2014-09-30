@@ -25,7 +25,6 @@ public class EntityTest extends Entity implements KeyListener{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		System.out.println(e.getKeyChar());
 		if(e.getKeyChar() == 'l'){
 			RenderFrame.addSoundToQueue(new Sound("debugsrc/0477.wav"));
 		}
@@ -33,25 +32,21 @@ public class EntityTest extends Entity implements KeyListener{
 			BoundingBox b = getBoundingBox();
 			b.setY(b.getY() - 15);
 			setBoundingBox(b);
-			System.out.println("up");
 		}
 		if(e.getKeyChar() == 's'){
 			BoundingBox b = getBoundingBox();
 			b.setY(b.getY() + 15);
 			setBoundingBox(b);
-			System.out.println("down");
 		}
 		if(e.getKeyChar() == 'a'){
 			BoundingBox b = getBoundingBox();
 			b.setX(b.getX() - 15);
 			setBoundingBox(b);
-			System.out.println("left");
 		}
 		if(e.getKeyChar() == 'd'){
 			BoundingBox b = getBoundingBox();
 			b.setX(b.getX() + 15);
 			setBoundingBox(b);
-			System.out.println("right");
 		}
 	}
 
