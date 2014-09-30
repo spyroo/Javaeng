@@ -28,6 +28,7 @@ public class RenderFrame extends JPanel{
 			new Thread(s).start();
 		}
 		soundQueue.clear();
+		repaint();
 	}
 	
 	@Override

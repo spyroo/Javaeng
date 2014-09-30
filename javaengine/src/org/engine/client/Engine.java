@@ -1,12 +1,7 @@
 package org.engine.client;
 
-import java.awt.Color;
-import java.awt.Image;
 import java.awt.Toolkit;
-import java.util.ArrayList;
-import java.util.Random;
-
-import javax.swing.JFrame;
+import java.awt.event.KeyListener;
 
 import org.engine.debug.*;
 
@@ -22,10 +17,12 @@ public class Engine implements Runnable{
 	//The releases WILL NOT HAVE A MAIN METHOD DELETE ME BEFORE RELEASING
 	public static void main(String[] args){
 		Engine e = new Engine();
-		Window w = e.getWindowInstance(Window.SCREEN_CONFIG.BORDERLESS_WINDOWED, 1920, 1080);
+		Window w = e.getWindowInstance(Window.SCREEN_CONFIG.WINDOWED, 800, 600);
 		RenderFrame f = new RenderFrame();
 		e.startEngine();
-		f.addEntity(new EntityTest());
+		Entity ent = new EntityTest();
+		f.addEntity(ent);
+		w.addKeyListener((KeyListener) ent);
 		w.setRenderFrame(f);
 		w.setIconImage(Toolkit.getDefaultToolkit().getImage("debugsrc/nickCage.jpg"));
 		w.init("Javaeng Test Build");
