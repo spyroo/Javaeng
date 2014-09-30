@@ -1,6 +1,9 @@
 package org.engine.client;
 
-public class Entity {
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+public class Entity implements KeyListener{
 	
 	private String entityId;
 	private BoundingBox boundingBox;
@@ -61,6 +64,21 @@ public class Entity {
 	
 	public void setY(int y){
 		boundingBox.setY(y);
+	}
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
