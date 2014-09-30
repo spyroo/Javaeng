@@ -1,11 +1,13 @@
 package org.engine.client;
 
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-public class RenderFrame extends JPanel{
+public class RenderFrame extends JPanel implements MouseListener{
 
 	private static final long serialVersionUID = 3943753884244498773L;
 	private ArrayList<Entity> entities;
@@ -54,6 +56,39 @@ public class RenderFrame extends JPanel{
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		for(Entity ent : entities){
+			if(ent.getBoundingBox().isOverlapping(e.getX(), e.getY())){
+				ent.onClicked();
+			}
+		}
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

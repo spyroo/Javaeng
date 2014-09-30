@@ -62,4 +62,10 @@ public class EntityTest extends Entity implements KeyListener{
 		
 	}
 	
+	@Override
+	public void onClicked() {
+		super.onClicked();
+		RenderFrame.addSoundToQueue(new Sound("debugsrc/disconnect.wav"));
+	}
+	
 }

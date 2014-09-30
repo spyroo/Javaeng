@@ -18,6 +18,13 @@ public class Entity {
 		
 	}
 	/**
+	 * Called when the entity is clicked on
+	 */
+	public void onClicked(){
+		
+	}
+	
+	/**
 	 * @return the entityId
 	 */
 	public String getEntityId() {
