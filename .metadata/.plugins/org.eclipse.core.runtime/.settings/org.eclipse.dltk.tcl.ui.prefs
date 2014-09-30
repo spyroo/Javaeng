@@ -2,6 +2,7 @@ DLTK_argument=207,191,173
 DLTK_base_class=82,227,246
 DLTK_class_definition=82,227,246
 DLTK_comment_task_tag=255,255,255
+DLTK_comment_task_tag_bold=true
 DLTK_default=207,191,173
 DLTK_function_definition=167,236,33
 DLTK_keyword=255,0,127

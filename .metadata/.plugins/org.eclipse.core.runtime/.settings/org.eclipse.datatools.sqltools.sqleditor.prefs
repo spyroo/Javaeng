@@ -5,5 +5,7 @@ Multi-line\ comment=0,0,0,0,0,255,255,255
 Others=0,0,0,0,0,207,191,173
 Single\ quoted\ string=0,0,0,0,0,236,228,126
 Single-line\ comment=0,0,0,0,0,255,255,255
+TerminalPrefInvertColors=true
 Type=0,0,0,0,0,82,227,246
 eclipse.preferences.version=1
+overriddenByCSS=,TerminalPrefInvertColors,

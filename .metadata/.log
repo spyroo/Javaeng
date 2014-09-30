@@ -3200,3 +3200,9 @@ java.lang.ClassCastException: org.eclipse.osgi.internal.framework.EquinoxConfigu
 
 !ENTRY org.eclipse.core.net 1 0 2014-09-30 08:05:51.063
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.ui 4 4 2014-09-30 08:18:44.549
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.backwardHistory: {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@333eb62d)} vs {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$1@24ae529b)}
+
+!ENTRY org.eclipse.ui 4 4 2014-09-30 08:18:46.451
+!MESSAGE Conflicting handlers for org.eclipse.ui.navigate.backwardHistory: {ActionHandler(org.eclipse.ui.internal.NavigationHistoryAction@333eb62d)} vs {ActionHandler(org.eclipse.ui.internal.dialogs.PreferencePageHistory$1@24ae529b)}

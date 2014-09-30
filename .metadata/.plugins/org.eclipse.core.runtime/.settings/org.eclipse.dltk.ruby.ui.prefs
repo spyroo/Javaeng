@@ -1,4 +1,5 @@
 DLTK_comment_task_tag=255,255,255
+DLTK_comment_task_tag_bold=true
 DLTK_default=207,191,173
 DLTK_doc=255,255,255
 DLTK_doc.topic=207,191,173
@@ -6,6 +7,8 @@ DLTK_keyword=255,0,127
 DLTK_keyword_return=255,0,127
 DLTK_number=196,140,255
 DLTK_single_line_comment=255,255,255
+DLTK_single_line_comment_bold=false
+DLTK_single_line_comment_italic=true
 DLTK_string=236,228,126
 DLTK_string.eval=236,228,126
 DLTK_string.regexp=236,228,126

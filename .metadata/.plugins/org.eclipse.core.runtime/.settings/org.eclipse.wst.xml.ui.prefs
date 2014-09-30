@@ -1,3 +1,4 @@
+TerminalPrefInvertColors=true
 cdataBorder=\#A7EC21 | null | null | null | null | null
 cdataText=\#CFBFAD | null | null | null | null | null
 commentBorder=\#FFFFFF | null | null | null | null | null
@@ -10,6 +11,7 @@ doctypeExtrenalSysref=\#A7EC21 | null | null | null | null | null
 doctypeName=\#A7EC21 | null | null | null | null | null
 eclipse.preferences.version=1
 entityReference=\#FF007F | null | null | null | null | null
+overriddenByCSS=,TerminalPrefInvertColors,
 piBorder=\#A7EC21 | null | null | null | null | null
 piContent=\#CFBFAD | null | null | null | null | null
 tagAttributeEquals=\#CFBFAD | null | null | null | null | null

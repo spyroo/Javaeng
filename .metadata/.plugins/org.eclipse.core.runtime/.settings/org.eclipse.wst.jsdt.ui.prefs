@@ -1,3 +1,4 @@
+TerminalPrefInvertColors=true
 eclipse.preferences.version=1
 java_bracket=249,250,244
 java_comment_task_tag=255,255,255
@@ -12,6 +13,7 @@ java_multi_line_comment=255,255,255
 java_operator=255,0,127
 java_single_line_comment=255,255,255
 java_string=236,228,126
+overriddenByCSS=,TerminalPrefInvertColors,
 semanticHighlighting.localVariable.color=207,191,173
 semanticHighlighting.localVariable.enabled=true
 semanticHighlighting.localVariableDeclaration.color=207,191,173
