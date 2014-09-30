@@ -9,9 +9,11 @@ public class RenderFrame extends JPanel{
 
 	private static final long serialVersionUID = 3943753884244498773L;
 	private ArrayList<Entity> entities;
+	private static ArrayList<Sound> soundQueue;
 	
 	public RenderFrame(){
 		entities= new ArrayList<Entity>();
+		soundQueue = new ArrayList<Sound>();
 	}
 	
 	/**
@@ -22,19 +24,27 @@ public class RenderFrame extends JPanel{
 		for(Entity e : entities){
 			e.update();
 		}
+		for(Sound s : soundQueue){
+			new Thread(s).start();
+		}
+		soundQueue.clear();
 	}
 	
 	@Override
 	public void paint(Graphics g) {
-		g.drawString("HELLO", 50, 50);
+		super.paint(g);
 		for(Entity e : entities){
 			g.drawImage(e.getTexture().getImage().getScaledInstance(e.getBoundingBox().getWidth(), e.getBoundingBox().getHeight(), 0), e.getBoundingBox().getX(), e.getBoundingBox().getY(), null);
 		}
-		super.paint(g);
+		
 	}
 	
 	public void addEntity(Entity e){
 		entities.add(e);
+	}
+	
+	public static void addSoundToQueue(Sound s){
+		soundQueue.add(s);
 	}
 	
 }
