@@ -9,6 +9,12 @@ public class Sound implements Runnable {
 	private String pathAndFileName;
 	private AudioClip clip;
 	
+	/**
+	 * The constructor for <code>Sound</code>
+	 * <br />
+	 * <br />
+	 * @param pathAndFileName The path and name of the file
+	 */
 	public Sound(String pathAndFileName){
 		this.pathAndFileName = pathAndFileName;
 		try {
@@ -17,11 +23,18 @@ public class Sound implements Runnable {
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * 
+	 * @return The Path and File name
+	 */
 	public String getPathAndFileName(){
 		return pathAndFileName;
 	}
 	
+	/**
+	 * Set the path and file name
+	 * @param pathAndFileName The Path and File name
+	 */
 	public void setPathAndFileName(String pathAndFileName){
 		this.pathAndFileName = pathAndFileName;
 	}
@@ -30,7 +43,7 @@ public class Sound implements Runnable {
 	public void run() {
 		playSound();
 	}
-	
+
 	/**
 	 * Plays the sound at the location of <code>pathAndFileName</code>
 	 */
