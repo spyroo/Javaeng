@@ -1,11 +1,13 @@
 package org.engine.client;
 
-import java.awt.Color;
-import java.awt.Image;
 import java.awt.Toolkit;
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JFrame;
+=======
+import java.awt.event.KeyListener;
+>>>>>>> FETCH_HEAD
 
 import org.engine.debug.*;
 
@@ -15,18 +17,18 @@ public class Engine implements Runnable{
 	private int fps;
 	private int workingFps;
 	private int maxFps;
-	private boolean fullblast = false;
 	private Window window;
-	private Random random = new Random();
 	
 	//-----DEBUG-----
 	//The releases WILL NOT HAVE A MAIN METHOD DELETE ME BEFORE RELEASING
 	public static void main(String[] args){
 		Engine e = new Engine();
-		Window w = e.getWindowInstance(Window.SCREEN_CONFIG.BORDERLESS_WINDOWED, 1920, 1080);
+		Window w = e.getWindowInstance(Window.SCREEN_CONFIG.WINDOWED, 800, 600);
 		RenderFrame f = new RenderFrame();
 		e.startEngine();
-		f.addEntity(new EntityTest());
+		Entity ent = new EntityTest();
+		f.addEntity(ent);
+		w.addKeyListener((KeyListener) ent);
 		w.setRenderFrame(f);
 		w.setIconImage(Toolkit.getDefaultToolkit().getImage("debugsrc/nickCage.jpg"));
 		w.init("Javaeng Test Build");
@@ -63,10 +65,6 @@ public class Engine implements Runnable{
 			workingFps = 0;
 			lastFps += 1000;
 			System.out.println("FPS: " + fps);
-			fullblast = true;
-		}
-		if (fullblast) {
-			makePrettyColors();
 		}
 		workingFps++;
 		
@@ -105,13 +103,6 @@ public class Engine implements Runnable{
 	 **/
 	public void startEngine(){
 		new Thread(this).start();
-	}
-	
-	public void makePrettyColors() {
-		int r1 = random.nextInt(255);
-		int r2 = random.nextInt(255);
-		int r3 = random.nextInt(255);
-		window.setBackground(new Color(r1,r2,r3));
 	}
 	
 }

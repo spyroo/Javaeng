@@ -6,6 +6,7 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Insets;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
 
@@ -58,7 +59,7 @@ public class Window extends JFrame {
 	 *            Title of the window to be initialize
 	 */
 	public void init(String title) {
-
+		
 		setResizable(false);
 		setUndecorated(true);
 
@@ -91,6 +92,7 @@ public class Window extends JFrame {
 			getContentPane().remove(this.frame);
 		this.frame = frame;
 		add(frame);
+		addMouseListener((MouseListener) frame);
 	}
 
 	/**
