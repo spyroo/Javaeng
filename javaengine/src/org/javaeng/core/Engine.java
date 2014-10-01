@@ -1,15 +1,5 @@
 package org.javaeng.core;
 
-import java.awt.Toolkit;
-import java.util.ArrayList;
-import java.util.Random;
-
-import javax.swing.JFrame;
-
-import java.awt.event.KeyListener;
-
-import org.javaeng.debug.*;
-
 public class Engine implements Runnable{
 	
 	private long lastFps;
@@ -17,21 +7,7 @@ public class Engine implements Runnable{
 	private int workingFps;
 	private Window window;
 	
-	//-----DEBUG-----
-	//The releases WILL NOT HAVE A MAIN METHOD DELETE ME BEFORE RELEASING
-	public static void main(String[] args){
-		Engine e = new Engine();
-		Window w = e.getWindowInstance(Window.SCREEN_CONFIG.WINDOWED, 800, 600);
-		RenderFrame f = new RenderFrame();
-		e.startEngine();
-		//Entity ent = new EntityTest();
-		//f.addEntity(ent);
-		//w.addKeyListener((KeyListener) ent);
-		w.setRenderFrame(f);
-		w.setIconImage(Toolkit.getDefaultToolkit().getImage("debugsrc/nickCage.jpg"));
-		w.init("Javaeng Test Build");
-	}
-	//-----END DEBUG-----
+
 	/**
 	 * The Constructor of the <code>Engine</code> class
 	 * 
@@ -61,7 +37,6 @@ public class Engine implements Runnable{
 			fps = workingFps;
 			workingFps = 0;
 			lastFps += 1000;
-			System.out.println("FPS: " + fps);
 		}
 		workingFps++;
 		
