@@ -1,2 +1,5 @@
+TerminalPrefInvertColors=true
 eclipse.preferences.version=1
 org.eclipse.rse.systemtype.local.systemType.defaultUserId=Kyle
+overriddenByCSS=,TerminalPrefInvertColors,
+useridperkey=kyles-mbp.Local\=Kyle;
