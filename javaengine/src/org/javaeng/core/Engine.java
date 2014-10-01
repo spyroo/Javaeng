@@ -1,22 +1,20 @@
-package org.engine.client;
+package org.javaeng.core;
 
 import java.awt.Toolkit;
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.Random;
-import javax.swing.JFrame;
-=======
-import java.awt.event.KeyListener;
->>>>>>> FETCH_HEAD
 
-import org.engine.debug.*;
+import javax.swing.JFrame;
+
+import java.awt.event.KeyListener;
+
+import org.javaeng.debug.*;
 
 public class Engine implements Runnable{
 	
 	private long lastFps;
 	private int fps;
 	private int workingFps;
-	private int maxFps;
 	private Window window;
 	
 	//-----DEBUG-----
@@ -41,7 +39,6 @@ public class Engine implements Runnable{
 	public Engine(){
 		fps = 0;
 		workingFps = 0;
-		maxFps = 60;
 		lastFps = getTime();
 	}
 	/**

@@ -1,4 +1,4 @@
-package org.engine.client;
+package org.javaeng.core;
 
 import java.applet.*;
 import java.io.File;

@@ -1,4 +1,4 @@
-package org.engine.client;
+package org.javaeng.core;
 
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
