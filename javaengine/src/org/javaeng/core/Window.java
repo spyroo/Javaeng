@@ -6,12 +6,14 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Insets;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
 
 
-public class Window extends JFrame {
+public class Window extends JFrame implements KeyListener{
 
 	public static enum SCREEN_CONFIG {
 		FULLSCREEN, WINDOWED, BORDERLESS_WINDOWED
@@ -24,6 +26,7 @@ public class Window extends JFrame {
 	private SCREEN_CONFIG windowType;
 	private int width;
 	private int height;
+	private boolean isMac;
 
 	/**
 	 * Protected Constructor for <code>Window</code> used to create a
@@ -48,6 +51,9 @@ public class Window extends JFrame {
 		windowType = mode;
 		this.width = width;
 		this.height = height;
+		if(System.getProperty("os.name").contains("mac")){
+			isMac = true;
+		}
 	}
 
 	/**
@@ -64,8 +70,12 @@ public class Window extends JFrame {
 		setUndecorated(true);
 
 		if (windowType == SCREEN_CONFIG.FULLSCREEN) {
+			if(isMac){
+				addKeyListener(this);
+			}
 			setPreferredSize(new Dimension(width, height));
 			defaultDevice.setFullScreenWindow(this);
+			validate();
 		} else if (windowType == SCREEN_CONFIG.BORDERLESS_WINDOWED) {
 			setPreferredSize(new Dimension((int) getScreenBounds(this).getWidth(), (int) getScreenBounds(this).getHeight()));
 		} else {
@@ -151,6 +161,23 @@ public class Window extends JFrame {
 			si = wnd.getToolkit().getScreenInsets(wnd.getGraphicsConfiguration());
 		}
 		return si;
+	}
+
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		if(arg0.getKeyCode() == KeyEvent.VK_ESCAPE){
+			System.exit(0);
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		
 	}
 
 }
