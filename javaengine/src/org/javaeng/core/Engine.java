@@ -24,9 +24,9 @@ public class Engine implements Runnable{
 		Window w = e.getWindowInstance(Window.SCREEN_CONFIG.WINDOWED, 800, 600);
 		RenderFrame f = new RenderFrame();
 		e.startEngine();
-		Entity ent = new EntityTest();
-		f.addEntity(ent);
-		w.addKeyListener((KeyListener) ent);
+		//Entity ent = new EntityTest();
+		//f.addEntity(ent);
+		//w.addKeyListener((KeyListener) ent);
 		w.setRenderFrame(f);
 		w.setIconImage(Toolkit.getDefaultToolkit().getImage("debugsrc/nickCage.jpg"));
 		w.init("Javaeng Test Build");
