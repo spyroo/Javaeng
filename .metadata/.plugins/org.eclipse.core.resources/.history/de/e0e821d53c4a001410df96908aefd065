@@ -45,7 +45,6 @@ public class Window extends JFrame implements KeyListener{
 	 *            if <code>SCREEN_CONFIG</code> is
 	 *            <code>BORDERLESS_WINDOWED</code>
 	 */
-	
 	protected Window(SCREEN_CONFIG mode, int width, int height) {
 		ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		defaultDevice = ge.getDefaultScreenDevice();
