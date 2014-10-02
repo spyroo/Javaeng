@@ -1,4 +1,4 @@
-package org.engine.debug;
+package org.javaeng.debug;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,11 +6,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
 
-import org.engine.client.BoundingBox;
-import org.engine.client.Entity;
-import org.engine.client.RenderFrame;
-import org.engine.client.Sound;
-import org.engine.client.Texture;
+import org.javaeng.core.BoundingBox;
+import org.javaeng.core.Entity;
+import org.javaeng.core.RenderFrame;
+import org.javaeng.core.Sound;
+import org.javaeng.core.Texture;
 
 public class EntityTest extends Entity{
 

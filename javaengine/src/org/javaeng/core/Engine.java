@@ -1,21 +1,30 @@
-package org.engine.client;
+package org.javaeng.core;
 
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Random;
-import javax.swing.JFrame;
 
-import org.engine.debug.*;
+import javax.swing.JFrame;
+<<<<<<< HEAD:javaengine/src/org/engine/client/Engine.java
+=======
+
+import java.awt.event.KeyListener;
+>>>>>>> FETCH_HEAD:javaengine/src/org/javaeng/core/Engine.java
+
+import org.javaeng.debug.*;
 
 public class Engine implements Runnable{
 	
 	private long lastFps;
 	private int fps;
 	private int workingFps;
+<<<<<<< HEAD:javaengine/src/org/engine/client/Engine.java
 	private int maxFps;
 	private boolean fullblast = false;
+=======
+>>>>>>> FETCH_HEAD:javaengine/src/org/javaeng/core/Engine.java
 	private Window window;
 	private Random random = new Random();
 	
@@ -39,7 +48,6 @@ public class Engine implements Runnable{
 	public Engine(){
 		fps = 0;
 		workingFps = 0;
-		maxFps = 60;
 		lastFps = getTime();
 	}
 	/**

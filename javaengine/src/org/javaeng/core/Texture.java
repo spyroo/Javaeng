@@ -1,4 +1,4 @@
-package org.engine.client;
+package org.javaeng.core;
 
 import java.awt.Image;
 import java.io.FileInputStream;
