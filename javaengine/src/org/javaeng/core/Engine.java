@@ -1,33 +1,23 @@
 package org.javaeng.core;
 
+<<<<<<< HEAD
 import java.awt.Toolkit;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import java.awt.event.KeyListener;
 import org.javaeng.debug.*;
+=======
+>>>>>>> FETCH_HEAD
 
 public class Engine implements Runnable{
 	
 	private long lastFps;
 	private int fps;
 	private int workingFps;
-	private int maxFps;
 	private Window window;
 	
-	//-----DEBUG-----
-	//The releases WILL NOT HAVE A MAIN METHOD DELETE ME BEFORE RELEASING
-	public static void main(String[] args){
-		Engine e = new Engine();
-		Window w = e.getWindowInstance(Window.SCREEN_CONFIG.FULLSCREEN, 1440, 900);
-		RenderFrame f = new RenderFrame();
-		e.startEngine();
-		f.addEntity(new EntityTest());
-		w.setRenderFrame(f);
-		w.setIconImage(Toolkit.getDefaultToolkit().getImage("debugsrc/nickCage.jpg"));
-		w.init("Javaeng Test Build");
-	}
-	//-----END DEBUG-----
+	
 	/**
 	 * The Constructor of the <code>Engine</code> class
 	 * 
