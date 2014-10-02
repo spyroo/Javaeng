@@ -7,12 +7,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.JFrame;
-<<<<<<< HEAD:javaengine/src/org/engine/client/Engine.java
-=======
-
 import java.awt.event.KeyListener;
->>>>>>> FETCH_HEAD:javaengine/src/org/javaeng/core/Engine.java
-
 import org.javaeng.debug.*;
 
 public class Engine implements Runnable{
@@ -20,11 +15,8 @@ public class Engine implements Runnable{
 	private long lastFps;
 	private int fps;
 	private int workingFps;
-<<<<<<< HEAD:javaengine/src/org/engine/client/Engine.java
 	private int maxFps;
 	private boolean fullblast = false;
-=======
->>>>>>> FETCH_HEAD:javaengine/src/org/javaeng/core/Engine.java
 	private Window window;
 	private Random random = new Random();
 	
@@ -71,10 +63,6 @@ public class Engine implements Runnable{
 			workingFps = 0;
 			lastFps += 1000;
 			System.out.println("FPS: " + fps);
-			fullblast = true;
-		}
-		if (fullblast) {
-			makePrettyColors();
 		}
 		workingFps++;
 		
@@ -115,6 +103,7 @@ public class Engine implements Runnable{
 		new Thread(this).start();
 	}
 	
+<<<<<<< HEAD
 	public void makePrettyColors() {
 		int r1 = random.nextInt(255);
 		int r2 = random.nextInt(255);
@@ -123,3 +112,6 @@ public class Engine implements Runnable{
 	}
 	
 }
+=======
+}
+>>>>>>> FETCH_HEAD
