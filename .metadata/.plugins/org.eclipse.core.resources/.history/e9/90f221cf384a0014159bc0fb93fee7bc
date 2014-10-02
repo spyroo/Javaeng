@@ -54,6 +54,8 @@ public class Window extends JFrame implements KeyListener{
 		if(System.getProperty("os.name").contains("Mac")){
 			isMac = true;
 		}
+		
+		System.out.println(System.getProperty("os.name"));
 	}
 
 	/**
