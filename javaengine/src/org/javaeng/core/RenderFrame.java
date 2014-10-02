@@ -1,13 +1,16 @@
 package org.javaeng.core;
 
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-public class RenderFrame extends JPanel implements MouseListener{
+public class RenderFrame extends JPanel implements MouseListener, MouseMotionListener, KeyListener{
 
 	private static final long serialVersionUID = 3943753884244498773L;
 	private ArrayList<Entity> entities;
@@ -69,26 +72,65 @@ public class RenderFrame extends JPanel implements MouseListener{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		for(Entity ent : entities){
+			ent.mousePressed(e);
+		}
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		for(Entity ent : entities){
+			ent.mouseReleased(e);
+		}
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		for(Entity ent : entities){
+			ent.mouseEntered(e);
+		}
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		for(Entity ent : entities){
+			ent.mouseExited(e);
+		}		
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		for(Entity ent : entities){
+			ent.mouseDragged(e);
+		}		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		for(Entity ent : entities){
+			ent.mouseMoved(e);
+		}
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		for(Entity ent : entities){
+			ent.keyTyped(e);
+		}
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		for(Entity ent : entities){
+			ent.keyPressed(e);
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		for(Entity ent : entities){
+			ent.keyReleased(e);
+		}
 	}
 	
 }

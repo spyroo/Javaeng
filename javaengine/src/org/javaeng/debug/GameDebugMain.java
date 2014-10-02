@@ -38,8 +38,9 @@ public class GameDebugMain {
 		pongFrame.addEntity(ball);
 		pongFrame.addEntity(paddle);
 		
-		w.addKeyListener(ball);
-		w.addKeyListener(paddle);
+		w.addKeyListener(pongFrame);
+		w.addMouseListener(pongFrame);
+		w.addMouseMotionListener(pongFrame);
 		
 		w.setRenderFrame(pongFrame);
 		w.init("Debug game");

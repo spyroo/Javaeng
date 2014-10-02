@@ -1,7 +1,6 @@
 package org.javaeng.debug;
 
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.Random;
 
 import javax.swing.JOptionPane;
@@ -12,7 +11,7 @@ import org.javaeng.core.RenderFrame;
 import org.javaeng.core.Sound;
 import org.javaeng.core.Texture;
 
-public class PongBall extends Entity implements KeyListener{
+public class PongBall extends Entity{
 
 	private int velocityX;
 	private int velocityY;
@@ -70,7 +69,7 @@ public class PongBall extends Entity implements KeyListener{
 	}
 	
 	public void reverseX(){
-		velocityX = (int) (-velocityX * 1.3);
+		velocityX = -velocityX * 2;
 		playBounceSound();
 	}
 	

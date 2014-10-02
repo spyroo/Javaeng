@@ -1,13 +1,13 @@
 package org.javaeng.debug;
 
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
 
 import org.javaeng.core.BoundingBox;
 import org.javaeng.core.Entity;
 import org.javaeng.core.Texture;
 
-public class PongPaddle extends Entity implements KeyListener{
+public class PongPaddle extends Entity{
 
 	private PongBall ball;
 	
@@ -44,6 +44,13 @@ public class PongPaddle extends Entity implements KeyListener{
 	
 	public void setBall(PongBall b){
 		this.ball = b;
+	}
+	
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		BoundingBox box = getBoundingBox();
+		box.setY(e.getY() - (box.getHeight()/2));
+		setBoundingBox(box);
 	}
 	
 }
