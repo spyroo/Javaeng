@@ -73,7 +73,7 @@ public class Window extends JFrame implements KeyListener{
 			if(isMac){
 				addKeyListener(this);
 			}
-			setPreferredSize(new Dimension(width, height));
+			setPreferredSize(new Dimension((int) getScreenBounds(this).getWidth(), (int) getScreenBounds(this).getHeight()));
 			defaultDevice.setFullScreenWindow(this);
 			validate();
 		} else if (windowType == SCREEN_CONFIG.BORDERLESS_WINDOWED) {
@@ -179,5 +179,13 @@ public class Window extends JFrame implements KeyListener{
 	public void keyTyped(KeyEvent e) {
 		
 	}
+	
+	public int getScreenWidth(){
+		return (int) getScreenBounds(this).getWidth();
+	}
+	public int getScreenHeight(){
+		return (int) getScreenBounds(this).getHeight();
+	}
+	
 
 }
