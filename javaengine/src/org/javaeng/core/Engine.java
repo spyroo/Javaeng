@@ -1,20 +1,14 @@
 package org.javaeng.core;
 
-import java.awt.Toolkit;
-import java.util.ArrayList;
-
-import javax.swing.JFrame;
-import java.awt.event.KeyListener;
-import org.javaeng.debug.*;
 
 
 public class Engine implements Runnable{
 	
-	private long lastFps;
-	private int fps;
-	private int workingFps;
 	private Window window;
-	private int targetFps;
+	private int framesPerSecond;
+	private int ticksToSkip;
+	private long nextGameTick;
+	private int sleepTime;
 	
 	
 	/**
@@ -22,10 +16,11 @@ public class Engine implements Runnable{
 	 * 
 	 */
 	public Engine(){
-		fps = 0;
-		workingFps = 0;
-		lastFps = getTime();
-		targetFps = 60;
+
+		framesPerSecond = 60;
+		ticksToSkip = 1000/framesPerSecond;
+		nextGameTick = getTime();
+		sleepTime = 0;
 	}
 	/**
 	 * Gets an instance of <code>Window</code>, creating one if <code>Engine</code> doesn't have a child <code>Window</code> object already.
@@ -41,24 +36,22 @@ public class Engine implements Runnable{
 	 * Ticks the <code>Engine</code>, updating everything
 	 */
 	private void tick(){
-		
-
-		//Calculate the current fps
-		if(getTime() - lastFps > 10000){
-			fps = workingFps;
-			workingFps = 0;
-			lastFps += 1000;
-			System.out.println("FPS: " + fps);
+		if(window.getRenderFrame() != null){
+			window.getRenderFrame().updateFrame();
 		}
-		workingFps++;
 		
-		
-		if((fps/targetFps) % workingFps == 0){
-			
-			if(window.getRenderFrame() != null){
-				window.getRenderFrame().updateFrame();
+		nextGameTick += ticksToSkip;
+		sleepTime = (int) (nextGameTick - getTime());
+		if(sleepTime >= 0){
+			try{
+				Thread.currentThread().sleep(sleepTime);
+			}catch(Exception e){
+				System.out.println("I was stopped but thats okay");
 			}
+		}else{
+			//we are behind
 		}
+		
 	}
 	
 	/**
@@ -75,14 +68,6 @@ public class Engine implements Runnable{
 		while(true){
 			tick();
 		}
-	}
-	
-	/**
-	 * Returns the current frames per second the application is running at.
-	 * @return The current frames per second
-	 **/
-	public int getCurrentFps(){
-		return fps;
 	}
 	
 	/**

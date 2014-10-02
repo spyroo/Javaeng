@@ -11,6 +11,9 @@ import org.javaeng.core.Window.SCREEN_CONFIG;
 
 public class GameDebugMain {
 
+	private static PongPaddle paddle;
+	private static PongBall ball;
+	
 	public static void main(String[] args) {
 		Engine e = new Engine();
 		Window w;
@@ -30,8 +33,8 @@ public class GameDebugMain {
 		}
 		e.startEngine();
 		e.startEngine();
-		PongBall ball = new PongBall(w.getScreenWidth(), w.getScreenHeight());
-		PongPaddle paddle = new PongPaddle(ball);
+		ball = new PongBall(w.getScreenWidth(), w.getScreenHeight());
+		paddle = new PongPaddle(ball);
 		pongFrame.addEntity(ball);
 		pongFrame.addEntity(paddle);
 		
@@ -41,21 +44,9 @@ public class GameDebugMain {
 		w.setRenderFrame(pongFrame);
 		w.init("Debug game");
 	}
-	/*
-	 * //-----DEBUG-----
-	//The releases WILL NOT HAVE A MAIN METHOD DELETE ME BEFORE RELEASING
-	public static void main(String[] args){
-		Engine e = new Engine();
-		Window w = e.getWindowInstance(Window.SCREEN_CONFIG.FULLSCREEN, 1440, 900);
-		RenderFrame f = new RenderFrame();
-		e.startEngine();
-		f.addEntity(new EntityTest());
-		w.setRenderFrame(f);
-		w.setIconImage(Toolkit.getDefaultToolkit().getImage("debugsrc/nickCage.jpg"));
-		w.init("Javaeng Test Build");
+	
+	public static PongBall getBall(){
+		return ball;
 	}
-	//-----END DEBUG-----
-	 * 
-	 */
-
+	
 }

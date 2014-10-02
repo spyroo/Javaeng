@@ -40,6 +40,7 @@ public class PongBall extends Entity implements KeyListener{
 		}
 		if(getBoundingBox().getX() <= 0){
 			JOptionPane.showMessageDialog(null, "Game Over!");
+			start();
 		}
 		
 		BoundingBox b = getBoundingBox();
@@ -69,7 +70,7 @@ public class PongBall extends Entity implements KeyListener{
 	}
 	
 	public void reverseX(){
-		velocityX = -velocityX;
+		velocityX = (int) (-velocityX * 1.3);
 		playBounceSound();
 	}
 	

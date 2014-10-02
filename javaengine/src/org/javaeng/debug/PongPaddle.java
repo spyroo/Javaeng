@@ -19,9 +19,10 @@ public class PongPaddle extends Entity implements KeyListener{
 	@Override
 	public void update() {
 		super.update();
-		BoundingBox b = getBoundingBox();
+		ball = GameDebugMain.getBall();
+		BoundingBox paddleBox = getBoundingBox();
 		BoundingBox ballBox = ball.getBoundingBox();
-		if(b.getY() > ballBox.getY() && b.getY() + b.getHeight() < ballBox.getY()){
+		if(paddleBox.isOverlapping(ballBox.getX(), ballBox.getY())){
 			ball.reverseX();
 		}
 	}
@@ -31,14 +32,18 @@ public class PongPaddle extends Entity implements KeyListener{
 		super.keyPressed(e);
 		if(e.getKeyCode() == KeyEvent.VK_W){
 			BoundingBox b = getBoundingBox();
-			b.setY(b.getY() - 5);
+			b.setY(b.getY() - 15);
 			setBoundingBox(b);
 		}
 		if(e.getKeyCode() == KeyEvent.VK_S){
 			BoundingBox b = getBoundingBox();
-			b.setY(b.getY() + 5);
+			b.setY(b.getY() + 15);
 			setBoundingBox(b);
 		}
+	}
+	
+	public void setBall(PongBall b){
+		this.ball = b;
 	}
 	
 }
