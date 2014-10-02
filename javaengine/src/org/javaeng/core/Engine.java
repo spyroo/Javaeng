@@ -16,9 +16,7 @@ public class Engine implements Runnable{
 	private int fps;
 	private int workingFps;
 	private int maxFps;
-	private boolean fullblast = false;
 	private Window window;
-	private Random random = new Random();
 	
 	//-----DEBUG-----
 	//The releases WILL NOT HAVE A MAIN METHOD DELETE ME BEFORE RELEASING
@@ -103,15 +101,5 @@ public class Engine implements Runnable{
 		new Thread(this).start();
 	}
 	
-<<<<<<< HEAD
-	public void makePrettyColors() {
-		int r1 = random.nextInt(255);
-		int r2 = random.nextInt(255);
-		int r3 = random.nextInt(255);
-		window.setBackground(new Color(r1,r2,r3));
-	}
 	
 }
-=======
-}
->>>>>>> FETCH_HEAD
