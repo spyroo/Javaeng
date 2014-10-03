@@ -73,7 +73,7 @@ public class PongBall extends Entity{
 	}
 	
 	public void reverseX(){
-		velocityX = -velocityX * 2;
+		velocityX = (int) ((int) -velocityX * 1.5);
 		playBounceSound();
 	}
 	
