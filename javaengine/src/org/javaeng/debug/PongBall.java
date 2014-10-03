@@ -17,23 +17,27 @@ public class PongBall extends Entity{
 	private int velocityY;
 	private int screenWidth;
 	private int screenHeight;
+	private EntityWall wallTop, wallBot, wallBack;
 	
-	public PongBall(int screenWidth, int screenHeight) {
+	public PongBall(int screenWidth, int screenHeight, EntityWall wallTop, EntityWall wallBot, EntityWall wallBack) {
 		super("ball", new BoundingBox((screenWidth / 3) * 2, screenHeight / 2, 20, 20), new Texture("debugsrc/paddle.jpg"));
 		this.screenHeight = screenHeight;
 		this.screenWidth = screenWidth;
 		velocityX = 0;
 		velocityY = 0;
+		this.wallBack = wallBack;
+		this.wallTop = wallTop;
+		this.wallBot = wallBot;
 	}
 	
 	@Override
 	public void update() {
 		super.update();
-		if(getBoundingBox().getX() >= screenWidth){
+		if(getBoundingBox().isOverlapping(wallBack.getBoundingBox())){
 			velocityX = -velocityX;
 			playBounceSound();
 		}
-		if(getBoundingBox().getY() >= screenHeight || getBoundingBox().getY() <= 0){
+		if(getBoundingBox().isOverlapping(wallTop.getBoundingBox()) || getBoundingBox().isOverlapping(wallBot.getBoundingBox())){
 			velocityY = -velocityY;
 			playBounceSound();
 		}

@@ -1,5 +1,9 @@
 package org.javaeng.core;
 
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Rectangle;
+
 public class BoundingBox {
 	
 	private int x, y, width, height;
@@ -11,6 +15,18 @@ public class BoundingBox {
 		this.height = height;
 	}
 	/**
+	 * Returns true if the <code>BoundingBox</code> given overlaps with this <code>BoundingBox</code>
+	 * @param xPos 
+	 * @param yPos
+	 */
+	public boolean isOverlapping(BoundingBox otherBox) {
+		
+		Rectangle rect1 = new Rectangle(new Point(getX(), getY()), new Dimension(width, height));
+		Rectangle rect2 = new Rectangle(new Point(otherBox.getX(), otherBox.getY()), new Dimension(otherBox.width, otherBox.height));
+		return rect1.intersects(rect2);
+		
+	}
+	/**
 	 * Returns true if the point of the given x/y is inside of the <code>BoundingBox</code>
 	 * @param xPos 
 	 * @param yPos
@@ -20,7 +36,7 @@ public class BoundingBox {
 			return true;
 		return false;
 	}
-
+	
 	/**
 	 * @return the x
 	 */

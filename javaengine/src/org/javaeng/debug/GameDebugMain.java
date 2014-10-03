@@ -33,8 +33,17 @@ public class GameDebugMain {
 		}
 		e.startEngine();
 		e.startEngine();
-		ball = new PongBall(w.getScreenWidth(), w.getScreenHeight());
+		
+		EntityWall wallTop = new EntityWall(0, -200);
+		EntityWall wallBot = new EntityWall(0, w.getScreenHeight());
+		EntityWall wallBack = new EntityWall(w.getScreenWidth());
+		
+		ball = new PongBall(w.getScreenWidth(), w.getScreenHeight(), wallTop, wallBot, wallBack);
 		paddle = new PongPaddle(ball);
+		
+		pongFrame.addEntity(wallTop);
+		pongFrame.addEntity(wallBot);
+		pongFrame.addEntity(wallBack);
 		pongFrame.addEntity(ball);
 		pongFrame.addEntity(paddle);
 		

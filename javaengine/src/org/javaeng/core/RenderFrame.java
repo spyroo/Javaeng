@@ -44,7 +44,8 @@ public class RenderFrame extends JPanel implements MouseListener, MouseMotionLis
 	public void paint(Graphics g) {
 		super.paint(g);
 		for(Entity e : entities){
-			g.drawImage(e.getTexture().getImage().getScaledInstance(e.getBoundingBox().getWidth(), e.getBoundingBox().getHeight(), 0), e.getBoundingBox().getX(), e.getBoundingBox().getY(), null);
+			if(e.getTexture() != null)
+				g.drawImage(e.getTexture().getImage().getScaledInstance(e.getBoundingBox().getWidth(), e.getBoundingBox().getHeight(), 0), e.getBoundingBox().getX(), e.getBoundingBox().getY(), null);
 		}
 		
 	}

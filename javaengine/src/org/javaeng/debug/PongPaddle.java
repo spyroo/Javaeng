@@ -22,7 +22,7 @@ public class PongPaddle extends Entity{
 		ball = GameDebugMain.getBall();
 		BoundingBox paddleBox = getBoundingBox();
 		BoundingBox ballBox = ball.getBoundingBox();
-		if(paddleBox.isOverlapping(ballBox.getX(), ballBox.getY())){
+		if(paddleBox.isOverlapping(ballBox)){
 			ball.reverseX();
 		}
 	}
