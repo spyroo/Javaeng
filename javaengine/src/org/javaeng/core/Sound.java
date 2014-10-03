@@ -1,9 +1,7 @@
 package org.javaeng.core;
 
-import java.applet.*;
 import java.io.File;
 import java.io.IOException;
-import java.net.*;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;

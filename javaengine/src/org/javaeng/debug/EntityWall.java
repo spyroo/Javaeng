@@ -2,7 +2,6 @@ package org.javaeng.debug;
 
 import org.javaeng.core.BoundingBox;
 import org.javaeng.core.Entity;
-import org.javaeng.core.Texture;
 
 public class EntityWall extends Entity{
 

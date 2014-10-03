@@ -9,6 +9,7 @@ public class Engine implements Runnable{
 	private int ticksToSkip;
 	private long nextGameTick;
 	private int sleepTime;
+	private int displayFps;
 	
 	
 	/**
@@ -21,6 +22,7 @@ public class Engine implements Runnable{
 		ticksToSkip = 1000/framesPerSecond;
 		nextGameTick = getTime();
 		sleepTime = 0;
+		displayFps = 0;
 	}
 	/**
 	 * Gets an instance of <code>Window</code>, creating one if <code>Engine</code> doesn't have a child <code>Window</code> object already.
@@ -35,6 +37,7 @@ public class Engine implements Runnable{
 	/**
 	 * Ticks the <code>Engine</code>, updating everything
 	 */
+	@SuppressWarnings("static-access")
 	private void tick(){
 		if(window.getRenderFrame() != null){
 			window.getRenderFrame().updateFrame();
@@ -42,6 +45,8 @@ public class Engine implements Runnable{
 		
 		nextGameTick += ticksToSkip;
 		sleepTime = (int) (nextGameTick - getTime());
+		displayFps = framesPerSecond;
+		System.out.println("Fps:" + displayFps + "+");
 		if(sleepTime >= 0){
 			try{
 				Thread.currentThread().sleep(sleepTime);
@@ -49,7 +54,7 @@ public class Engine implements Runnable{
 				System.out.println("I was stopped but thats okay");
 			}
 		}else{
-			//we are behind
+			System.out.println("Fps:" + displayFps + "-");
 		}
 		
 	}

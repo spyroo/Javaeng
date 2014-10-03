@@ -1,7 +1,5 @@
 package org.javaeng.debug;
 
-import java.awt.Toolkit;
-
 import javax.swing.JOptionPane;
 
 import org.javaeng.core.Engine;

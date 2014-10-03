@@ -1,10 +1,6 @@
 package org.javaeng.debug;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.util.Random;
 
 import org.javaeng.core.BoundingBox;
 import org.javaeng.core.Entity;
