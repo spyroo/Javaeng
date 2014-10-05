@@ -70,14 +70,6 @@ public class Entity{
 		
 	}
 	
-	public void keyPressed(KeyEvent e) {
-		
-	}
-	
-	public void keyReleased(KeyEvent e) {
-		
-	}
-	
 	public void mouseMoved(MouseEvent e) {
 		
 	}

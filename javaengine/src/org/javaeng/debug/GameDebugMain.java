@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 import org.javaeng.core.Engine;
 import org.javaeng.core.RenderFrame;
+import org.javaeng.core.UserInputListener;
 import org.javaeng.core.Window;
 import org.javaeng.core.Window.SCREEN_CONFIG;
 
@@ -48,6 +49,8 @@ public class GameDebugMain {
 		w.addKeyListener(pongFrame);
 		w.addMouseListener(pongFrame);
 		w.addMouseMotionListener(pongFrame);
+		
+		pongFrame.addUserInputListener(new UserInputListener());
 		
 		w.setRenderFrame(pongFrame);
 		w.init("Debug game");

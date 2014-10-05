@@ -27,21 +27,6 @@ public class PongPaddle extends Entity{
 		}
 	}
 	
-	@Override
-	public void keyPressed(KeyEvent e) {
-		super.keyPressed(e);
-		if(e.getKeyCode() == KeyEvent.VK_W){
-			BoundingBox b = getBoundingBox();
-			b.setY(b.getY() - 15);
-			setBoundingBox(b);
-		}
-		if(e.getKeyCode() == KeyEvent.VK_S){
-			BoundingBox b = getBoundingBox();
-			b.setY(b.getY() + 15);
-			setBoundingBox(b);
-		}
-	}
-	
 	public void setBall(PongBall b){
 		this.ball = b;
 	}

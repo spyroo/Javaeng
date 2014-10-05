@@ -10,6 +10,7 @@ import org.javaeng.core.Entity;
 import org.javaeng.core.RenderFrame;
 import org.javaeng.core.Sound;
 import org.javaeng.core.Texture;
+import org.javaeng.core.UserInputListener;
 
 public class PongBall extends Entity{
 
@@ -33,6 +34,9 @@ public class PongBall extends Entity{
 	@Override
 	public void update() {
 		super.update();
+		if(UserInputListener.isKeyDown(KeyEvent.VK_ENTER)){
+			start();
+		}
 		if(getBoundingBox().isOverlapping(wallBack.getBoundingBox())){
 			velocityX = -velocityX;
 			playBounceSound();
@@ -63,13 +67,6 @@ public class PongBall extends Entity{
 		setBoundingBox(b);
 		velocityX = new Random().nextInt(10) - 5;
 		velocityY = new Random().nextInt(10) - 5;
-	}
-	
-	@Override
-	public void keyPressed(KeyEvent e) {
-		if(e.getKeyCode() == KeyEvent.VK_ENTER){
-			start();
-		}
 	}
 	
 	public void reverseX(){

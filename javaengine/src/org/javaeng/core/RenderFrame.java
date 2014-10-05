@@ -16,11 +16,16 @@ public class RenderFrame extends JPanel implements MouseListener, MouseMotionLis
 	private ArrayList<Entity> entities;
 	private static ArrayList<Sound> soundQueue;
 	private static boolean canAddSoundToQueue;
+	private UserInputListener userInputListener;
 	
 	public RenderFrame(){
 		entities= new ArrayList<Entity>();
 		soundQueue = new ArrayList<Sound>();
 		canAddSoundToQueue = true;
+	}
+	
+	public void addUserInputListener(UserInputListener userInputListener){
+		this.userInputListener = userInputListener;
 	}
 	
 	/**
@@ -122,16 +127,14 @@ public class RenderFrame extends JPanel implements MouseListener, MouseMotionLis
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		for(Entity ent : entities){
-			ent.keyPressed(e);
-		}
+		if(userInputListener != null)
+			userInputListener.addKeyDown(e.getKeyCode());
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		for(Entity ent : entities){
-			ent.keyReleased(e);
-		}
+		if(userInputListener != null)
+			userInputListener.removeKeyDown(e.getKeyCode());
 	}
 	
 }

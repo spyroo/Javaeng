@@ -46,7 +46,6 @@ public class Engine implements Runnable{
 		nextGameTick += ticksToSkip;
 		sleepTime = (int) (nextGameTick - getTime());
 		displayFps = framesPerSecond;
-		System.out.println("Fps:" + displayFps + "+");
 		if(sleepTime >= 0){
 			try{
 				Thread.currentThread().sleep(sleepTime);
@@ -54,7 +53,6 @@ public class Engine implements Runnable{
 				System.out.println("I was stopped but thats okay");
 			}
 		}else{
-			System.out.println("Fps:" + displayFps + "-");
 		}
 		
 	}
