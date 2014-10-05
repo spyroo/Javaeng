@@ -1,4 +1,3 @@
-# THIS IS THE MASTER BRANCH, TO GET THE RELEASE, GO TO THE 'release' BRANCH
 # Javaeng
 
 
