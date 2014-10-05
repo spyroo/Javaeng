@@ -32,9 +32,9 @@ public class RenderFrame extends JPanel implements MouseListener, MouseMotionLis
 	 * Updates the render frame, redrawing all of the entities and calling their update method
 	 * 
 	 */
-	public synchronized void updateFrame(){
+	public synchronized void updateFrame(int delta){
 		for(Entity e : entities){
-			e.update();
+			e.update(delta);
 		}
 		canAddSoundToQueue = false;
 		for(Sound s : soundQueue){

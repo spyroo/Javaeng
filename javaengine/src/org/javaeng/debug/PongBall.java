@@ -14,8 +14,8 @@ import org.javaeng.core.UserInputListener;
 
 public class PongBall extends Entity{
 
-	private int velocityX;
-	private int velocityY;
+	private float velocityX;
+	private float velocityY;
 	private int screenWidth;
 	private int screenHeight;
 	private EntityWall wallTop, wallBot, wallBack;
@@ -32,8 +32,8 @@ public class PongBall extends Entity{
 	}
 	
 	@Override
-	public void update() {
-		super.update();
+	public void update(int delta) {
+		super.update(delta);
 		if(UserInputListener.isKeyDown(KeyEvent.VK_ENTER)){
 			start();
 		}
@@ -51,8 +51,8 @@ public class PongBall extends Entity{
 		}
 		
 		BoundingBox b = getBoundingBox();
-		b.setX(b.getX() + velocityX);
-		b.setY(b.getY() + velocityY);
+		b.setX(b.getX() + (int) (velocityX * delta));
+		b.setY(b.getY() + (int) (velocityY * delta));
 		setBoundingBox(b);
 	}
 	
@@ -65,12 +65,12 @@ public class PongBall extends Entity{
 		b.setX((screenWidth / 3) * 2);
 		b.setY(screenHeight / 2);
 		setBoundingBox(b);
-		velocityX = new Random().nextInt(10) - 5;
-		velocityY = new Random().nextInt(10) - 5;
+		velocityX = new Random().nextFloat() - 0.5f;
+		velocityY = new Random().nextFloat() - 0.5f;
 	}
 	
 	public void reverseX(){
-		velocityX = (int) ((int) -velocityX * 1.5);
+		velocityX = -velocityX + 0.3f;
 		playBounceSound();
 	}
 	

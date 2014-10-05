@@ -11,13 +11,11 @@ public class UserInputListener {
 	}
 	
 	public synchronized void addKeyDown(int key){
-		System.out.println("Key down");
 		if(!keysDown.contains((Object) key))
 				keysDown.add(key);
 	}
 	
 	public synchronized void removeKeyDown(int key){
-		System.out.println("Key up");
 		keysDown.remove((Object) key);
 	}
 	

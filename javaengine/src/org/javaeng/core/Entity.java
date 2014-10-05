@@ -17,7 +17,7 @@ public class Entity{
 	/**
 	 * Update the Entity
 	 */
-	public void update(){
+	public void update(int delta){
 		
 	}
 	/**

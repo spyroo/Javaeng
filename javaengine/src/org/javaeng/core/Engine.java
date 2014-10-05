@@ -9,7 +9,7 @@ public class Engine implements Runnable{
 	private int ticksToSkip;
 	private long nextGameTick;
 	private int sleepTime;
-	private int displayFps;
+	private long lastFrame;
 	
 	
 	/**
@@ -22,8 +22,18 @@ public class Engine implements Runnable{
 		ticksToSkip = 1000/framesPerSecond;
 		nextGameTick = getTime();
 		sleepTime = 0;
-		displayFps = 0;
+		lastFrame = getTime();
 	}
+	/**
+	 * Sets the current target frames per second for the program to operate at
+	 * 
+	 * @param framesPerSecond
+	 */
+	public void setFramesPerSecond(int framesPerSecond){
+		this.framesPerSecond = framesPerSecond;
+		ticksToSkip = 1000/framesPerSecond;
+	}
+	
 	/**
 	 * Gets an instance of <code>Window</code>, creating one if <code>Engine</code> doesn't have a child <code>Window</code> object already.
 	 * @param mode The mode
@@ -40,12 +50,11 @@ public class Engine implements Runnable{
 	@SuppressWarnings("static-access")
 	private void tick(){
 		if(window.getRenderFrame() != null){
-			window.getRenderFrame().updateFrame();
+			window.getRenderFrame().updateFrame(getDelta());
 		}
 		
 		nextGameTick += ticksToSkip;
 		sleepTime = (int) (nextGameTick - getTime());
-		displayFps = framesPerSecond;
 		if(sleepTime >= 0){
 			try{
 				Thread.currentThread().sleep(sleepTime);
@@ -55,6 +64,13 @@ public class Engine implements Runnable{
 		}else{
 		}
 		
+	}
+	
+	public int getDelta() {
+	    long time = getTime();
+	    int delta = (int) (time - lastFrame);
+	    lastFrame = time;
+	    return delta;
 	}
 	
 	/**

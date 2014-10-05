@@ -104,5 +104,8 @@ public class Sound implements Runnable {
 
         sourceLine.drain();
         sourceLine.close();
+        
+        Thread.currentThread().interrupt();
+        
 	}
 }

@@ -1,6 +1,5 @@
 package org.javaeng.debug;
 
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import org.javaeng.core.BoundingBox;
@@ -17,8 +16,8 @@ public class PongPaddle extends Entity{
 	}
 	
 	@Override
-	public void update() {
-		super.update();
+	public void update(int delta) {
+		super.update(delta);
 		ball = GameDebugMain.getBall();
 		BoundingBox paddleBox = getBoundingBox();
 		BoundingBox ballBox = ball.getBoundingBox();
