@@ -1,7 +1,6 @@
 package org.javaeng.core;
 
 
-
 public class Engine implements Runnable{
 	
 	private Window window;

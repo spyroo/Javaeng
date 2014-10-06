@@ -33,6 +33,8 @@ public class RenderFrame extends JPanel implements MouseListener, MouseMotionLis
 	 * 
 	 */
 	public synchronized void updateFrame(int delta){
+	
+	public synchronized void updateFrame(){
 		for(Entity e : entities){
 			e.update(delta);
 		}

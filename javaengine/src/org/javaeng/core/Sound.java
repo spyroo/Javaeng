@@ -101,7 +101,6 @@ public class Sound implements Runnable {
                 int nBytesWritten = sourceLine.write(abData, 0, nBytesRead);
             }
         }
-
         sourceLine.drain();
         sourceLine.close();
         
