@@ -8,6 +8,7 @@ public class Entity{
 	private String entityId;
 	private BoundingBox boundingBox;
 	private Texture texture;
+	private Animation currentAnimation;
 	
 	public Entity(String entityId, BoundingBox boundingBox, Texture texture){
 		this.entityId = entityId;
@@ -18,7 +19,11 @@ public class Entity{
 	 * Update the Entity
 	 */
 	public void update(int delta){
-		
+		if(currentAnimation != null){
+			if(currentAnimation.tick()){
+				currentAnimation = null;
+			}
+		}
 	}
 	/**
 	 * Called when the entity is clicked on
@@ -92,6 +97,13 @@ public class Entity{
 	
 	public void mouseDragged(MouseEvent e) {
 		
+	}
+	public Animation getCurrentAnimation() {
+		return currentAnimation;
+	}
+	public void setCurrentAnimation(Animation currentAnimation) {
+		if(this.currentAnimation == null)
+			this.currentAnimation = currentAnimation;
 	}
 	
 }

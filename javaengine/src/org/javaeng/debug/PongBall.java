@@ -5,8 +5,10 @@ import java.util.Random;
 
 import javax.swing.JOptionPane;
 
+import org.javaeng.core.Animation;
 import org.javaeng.core.BoundingBox;
 import org.javaeng.core.Entity;
+import org.javaeng.core.IncorrectImageScaleException;
 import org.javaeng.core.RenderFrame;
 import org.javaeng.core.Sound;
 import org.javaeng.core.Texture;
@@ -57,6 +59,11 @@ public class PongBall extends Entity{
 	}
 	
 	private void playBounceSound(){
+		try {
+			setCurrentAnimation(new Animation(this, "debugsrc/sprite.png", 5, 5, 6, 0));
+		} catch (IncorrectImageScaleException e) {
+			e.printStackTrace();
+		}
 		RenderFrame.addSoundToQueue(new Sound("debugsrc/bloop_x.wav"));
 	}
 	
