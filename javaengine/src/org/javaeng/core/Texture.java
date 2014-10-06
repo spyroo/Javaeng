@@ -15,7 +15,11 @@ public class Texture {
 	 * @param imageNameAndPath Path and Image name to the image
 	 */
 	public Texture(String imageNameAndPath) {
-		image = getImage(imageNameAndPath);
+		image = getImageSource(imageNameAndPath);
+	}
+	
+	public Texture(Image image){
+		this.image = image;
 	}
 	
 	/**
@@ -24,7 +28,7 @@ public class Texture {
 	 * @param imageNameAndPath
 	 * @return
 	 */
-	private Image getImage(String imageNameAndPath) {
+	public static Image getImageSource(String imageNameAndPath) {
 		try {
 			Image imageTemp = ImageIO.read(new FileInputStream(imageNameAndPath));
 			return imageTemp;
@@ -39,6 +43,6 @@ public class Texture {
 	}
 
 	public void setImage(String fileName) {
-		image = getImage(fileName);
+		image = getImageSource(fileName);
 	}
 }
