@@ -43,8 +43,8 @@ public class GameDebugMain {
 		pongFrame.addEntity(wallTop);
 		pongFrame.addEntity(wallBot);
 		pongFrame.addEntity(wallBack);
-		pongFrame.addEntity(ball);
 		pongFrame.addEntity(paddle);
+		pongFrame.addEntity(ball);
 		
 		w.addKeyListener(pongFrame);
 		w.addMouseListener(pongFrame);

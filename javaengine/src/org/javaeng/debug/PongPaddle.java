@@ -11,7 +11,7 @@ public class PongPaddle extends Entity{
 	private PongBall ball;
 	
 	public PongPaddle(PongBall ball) {
-		super("paddle", new BoundingBox(20, 20, 20, 200), new Texture("debugsrc/paddle.jpg"));
+		super("paddle", new BoundingBox(20, 20, 20, 200, 45, 0), new Texture("debugsrc/paddle.jpg"));
 		this.ball = ball;
 	}
 	
@@ -21,9 +21,12 @@ public class PongPaddle extends Entity{
 		ball = GameDebugMain.getBall();
 		BoundingBox paddleBox = getBoundingBox();
 		BoundingBox ballBox = ball.getBoundingBox();
-		if(paddleBox.isOverlapping(ballBox)){
+		if(paddleBox.isOverlapping(ballBox, false)){
 			ball.reverseX();
 		}
+		BoundingBox b = getBoundingBox();
+		b.setRotation(b.getRotation() + 1);
+		setBoundingBox(b);
 	}
 	
 	public void setBall(PongBall b){

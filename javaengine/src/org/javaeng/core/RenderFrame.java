@@ -1,6 +1,7 @@
 package org.javaeng.core;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -34,7 +35,7 @@ public class RenderFrame extends JPanel implements MouseListener,
 	 * update method
 	 * 
 	 */
-	
+
 	public synchronized void updateFrame(int delta) {
 		for (Entity e : entities) {
 			e.update(delta);
@@ -52,15 +53,12 @@ public class RenderFrame extends JPanel implements MouseListener,
 	public void paint(Graphics g) {
 		super.paint(g);
 		for (Entity e : entities) {
-			if (e.getTexture() != null)
-				g.drawImage(
-						e.getTexture()
-								.getImage()
-								.getScaledInstance(
-										e.getBoundingBox().getWidth(),
-										e.getBoundingBox().getHeight(), 0), e
-								.getBoundingBox().getX(), e.getBoundingBox()
-								.getY(), null);
+			if (e.getTexture() != null) {
+				Graphics2D g2d = (Graphics2D) g.create();
+				g2d.rotate(Math.toRadians(e.getBoundingBox().getRotation()), e.getBoundingBox().getX() + e.getBoundingBox().getWidth()/2,e.getBoundingBox().getY() +  e.getBoundingBox().getHeight()/2);
+				g2d.drawImage(e.getTexture().getImage().getScaledInstance(e.getBoundingBox().getWidth(),e.getBoundingBox().getHeight(), 0), e.getBoundingBox().getX(), e.getBoundingBox().getY(), null);
+				g2d.dispose();
+			}
 		}
 
 	}

@@ -23,7 +23,7 @@ public class PongBall extends Entity{
 	private EntityWall wallTop, wallBot, wallBack;
 	
 	public PongBall(int screenWidth, int screenHeight, EntityWall wallTop, EntityWall wallBot, EntityWall wallBack) {
-		super("ball", new BoundingBox((screenWidth / 3) * 2, screenHeight / 2, 20, 20), new Texture("debugsrc/paddle.jpg"));
+		super("ball", new BoundingBox((screenWidth / 3) * 2, screenHeight / 2, 20, 20, 0, 0), new Texture("debugsrc/paddle.jpg"));
 		this.screenHeight = screenHeight;
 		this.screenWidth = screenWidth;
 		velocityX = 0;
@@ -39,11 +39,11 @@ public class PongBall extends Entity{
 		if(UserInputListener.isKeyDown(KeyEvent.VK_ENTER)){
 			start();
 		}
-		if(getBoundingBox().isOverlapping(wallBack.getBoundingBox())){
+		if(getBoundingBox().isOverlapping(wallBack.getBoundingBox(), false)){
 			velocityX = -velocityX;
 			playBounceSound();
 		}
-		if(getBoundingBox().isOverlapping(wallTop.getBoundingBox()) || getBoundingBox().isOverlapping(wallBot.getBoundingBox())){
+		if(getBoundingBox().isOverlapping(wallTop.getBoundingBox(), false) || getBoundingBox().isOverlapping(wallBot.getBoundingBox(), false)){
 			velocityY = -velocityY;
 			playBounceSound();
 		}
@@ -55,6 +55,7 @@ public class PongBall extends Entity{
 		BoundingBox b = getBoundingBox();
 		b.setX(b.getX() + (int) (velocityX * delta));
 		b.setY(b.getY() + (int) (velocityY * delta));
+		b.setRotation(b.getRotation() + 1);
 		setBoundingBox(b);
 	}
 	
