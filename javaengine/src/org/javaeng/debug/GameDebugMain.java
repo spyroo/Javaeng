@@ -19,9 +19,10 @@ public class GameDebugMain {
 		RenderFrame pongFrame = new RenderFrame();
 		
 		Object[] possibilities = { "Borderless Windowed", "Fullscreen", "Windowed" };
-		String s = (String) JOptionPane.showInputDialog(null, "Display Option",
-				"Choose Display", JOptionPane.PLAIN_MESSAGE, null,
-				possibilities, "Borderless Windowed");
+		String s = (String) JOptionPane.showInputDialog(null, "Display Option","Choose Display", JOptionPane.PLAIN_MESSAGE, null,possibilities, "Borderless Windowed");
+		if(s == null){
+			System.exit(0);
+		}
 		if(s.toLowerCase().contains("borderless")){
 			w = e.getWindowInstance(SCREEN_CONFIG.BORDERLESS_WINDOWED, 0, 0);
 		}
@@ -30,7 +31,6 @@ public class GameDebugMain {
 		}else{
 			w = e.getWindowInstance(SCREEN_CONFIG.WINDOWED, 1920, 1080);
 		}
-		e.startEngine();
 		e.startEngine();
 		
 		EntityWall wallTop = new EntityWall(0, -200);
