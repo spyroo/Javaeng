@@ -25,27 +25,7 @@ public class Animation {
 		this.heightPerFrame = heightPerFrame;
 		this.numberOfFrames = numberOfFrames;
 		this.position = startPosition;
-		populateTextureList();
-	}
-
-	private void populateTextureList() throws IncorrectImageScaleException {
-		if (spriteSheet.getWidth(null) % widthPerFrame > 0
-				|| spriteSheet.getHeight(null) % heightPerFrame > 0)
-			throw new IncorrectImageScaleException();
-		int numberOfTexturesPerRow = spriteSheet.getWidth(null) / widthPerFrame;
-		int numberOfTexturesPerCol = spriteSheet.getHeight(null)
-				/ heightPerFrame;
-		for (int row = 0; row < numberOfTexturesPerRow; row++) {
-			for (int col = 0; col < numberOfTexturesPerCol; col++) {
-				if (textureList.size() < numberOfFrames)
-					textureList.add(new Texture((Image) spriteSheet
-							.getSubimage(row * widthPerFrame, col
-									* heightPerFrame, widthPerFrame,
-									heightPerFrame)));
-				else
-					return;
-			}
-		}
+		textureList = Texture.getTextureList(spriteSheet, widthPerFrame, heightPerFrame, numberOfFrames);
 	}
 
 	public boolean tick() {
