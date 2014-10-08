@@ -15,9 +15,9 @@ public class Engine implements Runnable{
 	 * The Constructor of the <code>Engine</code> class
 	 * 
 	 */
-	public Engine(){
+	public Engine(int framesPerSecond){
 
-		framesPerSecond = 60;
+		this.framesPerSecond = framesPerSecond;
 		ticksToSkip = 1000/framesPerSecond;
 		nextGameTick = getTime();
 		sleepTime = 0;

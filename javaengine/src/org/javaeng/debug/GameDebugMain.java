@@ -14,7 +14,7 @@ public class GameDebugMain {
 	private static PongBall ball;
 	
 	public static void main(String[] args) {
-		Engine e = new Engine();
+		Engine e = new Engine(60);
 		Window w;
 		RenderFrame pongFrame = new RenderFrame();
 		
