@@ -58,7 +58,7 @@ public class Texture {
 		for (int row = 0; row < numberOfTexturesPerRow; row++) {
 			for (int col = 0; col < numberOfTexturesPerCol; col++) {
 				if (textureList.size() < numberOfFrames)
-					textureList.add(new Texture((Image) spriteSheet.getSubimage(row * widthPerFrame, col* heightPerFrame, widthPerFrame,heightPerFrame)));
+					textureList.add(new Texture((Image) spriteSheet.getSubimage(col * widthPerFrame, row* heightPerFrame, widthPerFrame,heightPerFrame)));
 				else
 					return textureList;
 			}

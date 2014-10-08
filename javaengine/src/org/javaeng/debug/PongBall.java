@@ -60,11 +60,7 @@ public class PongBall extends Entity{
 	}
 	
 	private void playBounceSound(){
-		try {
-			setCurrentAnimation(new Animation(this, "debugsrc/sprite.png", 5, 5, 6, 0));
-		} catch (IncorrectImageScaleException e) {
-			e.printStackTrace();
-		}
+
 		RenderFrame.addSoundToQueue(new Sound("debugsrc/bloop_x.wav"));
 	}
 	

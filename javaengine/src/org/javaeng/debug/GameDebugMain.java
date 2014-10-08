@@ -37,6 +37,8 @@ public class GameDebugMain {
 		EntityWall wallBot = new EntityWall(0, w.getScreenHeight());
 		EntityWall wallBack = new EntityWall(w.getScreenWidth());
 		
+		EntityKungFu eku = new EntityKungFu();
+		
 		ball = new PongBall(w.getScreenWidth(), w.getScreenHeight(), wallTop, wallBot, wallBack);
 		paddle = new PongPaddle(ball);
 		
@@ -45,6 +47,7 @@ public class GameDebugMain {
 		pongFrame.addEntity(wallBack);
 		pongFrame.addEntity(paddle);
 		pongFrame.addEntity(ball);
+		pongFrame.addEntity(eku);
 		
 		w.addKeyListener(pongFrame);
 		w.addMouseListener(pongFrame);
