@@ -46,6 +46,20 @@ public class RenderFrame extends JPanel implements MouseListener,
 		}
 		soundQueue.clear();
 		canAddSoundToQueue = true;
+		
+		ArrayList<Entity> tempEnts = new ArrayList<Entity>();
+		tempEnts.addAll(entities);
+		for(int i = 0, max = tempEnts.size(); i < max; i++){
+			Entity thisOne = tempEnts.get(0);
+			tempEnts.remove(0);
+			for(Entity e : tempEnts){
+				if(thisOne.getBoundingBox().isOverlapping(e.getBoundingBox(), false)){
+					thisOne.collisionWith(e);
+					e.collisionWith(thisOne);
+				}
+			}
+		}
+		
 		repaint();
 	}
 

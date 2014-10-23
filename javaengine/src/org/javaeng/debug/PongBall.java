@@ -39,14 +39,7 @@ public class PongBall extends Entity{
 		if(UserInputListener.isKeyDown(KeyEvent.VK_ENTER)){
 			start();
 		}
-		if(getBoundingBox().isOverlapping(wallBack.getBoundingBox(), false)){
-			velocityX = -velocityX;
-			playBounceSound();
-		}
-		if(getBoundingBox().isOverlapping(wallTop.getBoundingBox(), false) || getBoundingBox().isOverlapping(wallBot.getBoundingBox(), false)){
-			velocityY = -velocityY;
-			playBounceSound();
-		}
+
 		if(getBoundingBox().getX() <= 0){
 			JOptionPane.showMessageDialog(null, "Game Over!");
 			start();
@@ -76,6 +69,17 @@ public class PongBall extends Entity{
 	public void reverseX(){
 		velocityX = -velocityX + 0.3f;
 		playBounceSound();
+	}
+	
+	@Override
+	public void collisionWith(Entity otherEnt) {
+		playBounceSound();
+		if(otherEnt.equals(wallTop) || otherEnt.equals(wallBot)){
+			velocityY = -velocityY;
+		}
+		else if(otherEnt.equals(wallBack)){
+			velocityX = -velocityX;
+		}
 	}
 	
 }

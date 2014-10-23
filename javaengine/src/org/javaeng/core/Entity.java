@@ -106,4 +106,8 @@ public class Entity{
 			this.currentAnimation = currentAnimation;
 	}
 	
+	public void collisionWith(Entity otherEnt){
+		
+	}
+	
 }
