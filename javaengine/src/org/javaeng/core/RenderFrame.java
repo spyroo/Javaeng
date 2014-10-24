@@ -2,6 +2,7 @@ package org.javaeng.core;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -19,11 +20,14 @@ public class RenderFrame extends JPanel implements MouseListener,
 	private static ArrayList<Sound> soundQueue;
 	private static boolean canAddSoundToQueue;
 	private UserInputListener userInputListener;
+	private RenderingHints rhints;
 
 	public RenderFrame() {
 		entities = new ArrayList<Entity>();
 		soundQueue = new ArrayList<Sound>();
 		canAddSoundToQueue = true;
+		rhints = new RenderingHints(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+		rhints.put(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 	}
 
 	public void addUserInputListener(UserInputListener userInputListener) {
@@ -69,6 +73,7 @@ public class RenderFrame extends JPanel implements MouseListener,
 		for (Entity e : entities) {
 			if (e.getTexture() != null) {
 				Graphics2D g2d = (Graphics2D) g.create();
+				g2d.setRenderingHints(rhints);
 				g2d.rotate(Math.toRadians(e.getBoundingBox().getRotation()), e.getBoundingBox().getX() + e.getBoundingBox().getWidth()/2,e.getBoundingBox().getY() +  e.getBoundingBox().getHeight()/2);
 				g2d.drawImage(e.getTexture().getImage().getScaledInstance(e.getBoundingBox().getWidth(),e.getBoundingBox().getHeight(), 0), e.getBoundingBox().getX(), e.getBoundingBox().getY(), null);
 				g2d.dispose();
