@@ -76,6 +76,9 @@ public class RenderFrame extends JPanel implements MouseListener,
 				g2d.setRenderingHints(rhints);
 				g2d.rotate(Math.toRadians(e.getBoundingBox().getRotation()), e.getBoundingBox().getX() + e.getBoundingBox().getWidth()/2,e.getBoundingBox().getY() +  e.getBoundingBox().getHeight()/2);
 				g2d.drawImage(e.getTexture().getImage().getScaledInstance(e.getBoundingBox().getWidth(),e.getBoundingBox().getHeight(), 0), e.getBoundingBox().getX(), e.getBoundingBox().getY(), null);
+				if(e.getTexture().isHasText()){
+					g2d.drawString(e.getTexture().getText(), e.getBoundingBox().getX() + e.getTexture().getTextX(), e.getBoundingBox().getY() + e.getTexture().getTextY());
+				}
 				g2d.dispose();
 			}
 		}

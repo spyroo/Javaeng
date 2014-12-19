@@ -11,6 +11,10 @@ public class Texture {
 	
 	private Image image;
 	
+	private String text;
+	private boolean hasText;
+	int textX, textY;
+	
 	/**
 	 * The Constructor for <code>Texture</code>
 	 * 
@@ -22,6 +26,22 @@ public class Texture {
 	
 	public Texture(Image image){
 		this.image = image;
+	}
+	
+	public Texture(Image image, String text, int textX, int textY){
+		this.image = image;
+		this.hasText = true;
+		this.text = text;
+		this.textX = textX;
+		this.textY = textY;
+	}
+	
+	public Texture(String imageNameAndPath, String text, int textX, int textY){
+		image = getImageSource(imageNameAndPath);
+		this.hasText = true;
+		this.text = text;
+		this.textX = textX;
+		this.textY = textY;
 	}
 	
 	/**
@@ -64,6 +84,39 @@ public class Texture {
 			}
 		}
 		return textureList;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		if(text.length() < 1){
+			this.hasText = false;
+		}else{
+			this.hasText = true;
+		}
+		this.text = text;
+	}
+
+	public int getTextX() {
+		return textX;
+	}
+
+	public void setTextX(int textX) {
+		this.textX = textX;
+	}
+
+	public int getTextY() {
+		return textY;
+	}
+
+	public void setTextY(int textY) {
+		this.textY = textY;
+	}
+
+	public boolean isHasText() {
+		return hasText;
 	}
 	
 }

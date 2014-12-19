@@ -21,9 +21,12 @@ public class PongBall extends Entity{
 	private int screenWidth;
 	private int screenHeight;
 	private EntityWall wallTop, wallBot, wallBack;
+	private int bounces;
 	
 	public PongBall(int screenWidth, int screenHeight, EntityWall wallTop, EntityWall wallBot, EntityWall wallBack) {
 		super("ball", new BoundingBox((screenWidth / 3) * 2, screenHeight / 2, 20, 20, 0, 0), new Texture("debugsrc/paddle.jpg"));
+		this.getTexture().setText("This is a test");
+		this.getTexture().setTextY(20);
 		this.screenHeight = screenHeight;
 		this.screenWidth = screenWidth;
 		velocityX = 0;
@@ -31,6 +34,7 @@ public class PongBall extends Entity{
 		this.wallBack = wallBack;
 		this.wallTop = wallTop;
 		this.wallBot = wallBot;
+		bounces = 0;
 	}
 	
 	@Override
@@ -55,6 +59,7 @@ public class PongBall extends Entity{
 	private void playBounceSound(){
 
 		RenderFrame.addSoundToQueue(new Sound("debugsrc/bloop_x.wav"));
+		this.getTexture().setText("Bounces: " + bounces++);
 	}
 	
 	public void start(){
